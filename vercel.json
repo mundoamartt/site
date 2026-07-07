@@ -1,3 +1,10 @@
 {
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/chama-que-vem-business-planner/",
+      "permanent": false
+    }
+  ]
 }
