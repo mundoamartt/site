@@ -1,13 +1,70 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
+<html lang="pt-BR"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chama Que Vem | Business Planner — Amartt</title>
+<title>Chama Que Vem | Business Planner â Amartt</title>
+<script>document.documentElement.className += ' js';</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Alex+Brush&display=swap" rel="stylesheet">
+<style>/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+</style>
 <style>
-  /* NOTA: "Lavonia Classy" é fonte paga e não está disponível via CDN gratuito.
+  /* NOTA: "Lavonia Classy" Ã© fonte paga e nÃ£o estÃ¡ disponÃ­vel via CDN gratuito.
      Usei "Alex Brush" como substituta visual por ora. */
   :root{
     --ink:#211C14;
@@ -23,6 +80,7 @@
     --font-body:'Avenir','Montserrat',sans-serif;
     --font-display:'Montserrat',sans-serif;
     --font-script:'Lavonia Classy','Alex Brush',cursive;
+    --ease-out: cubic-bezier(.16,1,.3,1);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -34,8 +92,11 @@
     font-size:17px;
     line-height:1.7;
     -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
   img{max-width:100%; display:block;}
+  a{color:var(--rose);}
+  a:hover{color:var(--rose-deep);}
   .eyebrow{
     font-family:var(--font-display);
     font-size:12px;
@@ -56,12 +117,21 @@
   }
   section{position:relative;}
 
-  .reveal{opacity:0; transform:translateY(24px); transition:opacity 0.9s ease, transform 0.9s ease;}
+  /* ============ REVEAL / STAGGER PRIMITIVES ============ */
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);}
   .reveal.in{opacity:1; transform:translateY(0);}
-  @media (prefers-reduced-motion: reduce){
-    .reveal{opacity:1; transform:none; transition:none;}
-    html{scroll-behavior:auto;}
-  }
+
+  .stagger-item{opacity:0; transform:translateY(22px); transition:opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);}
+  .stagger-item.in{opacity:1; transform:translateY(0);}
+
+  /* Only hide these when JS is running (progressive enhancement) */
+  html:not(.js) .reveal,
+  html:not(.js) .stagger-item,
+  html:not(.js) .base-card,
+  html:not(.js) .depo-card,
+  html:not(.js) .ticket,
+  html:not(.js) .tl-item,
+  html:not(.js) .rose-rule{opacity:1 !important; transform:none !important;}
 
   /* ============ HERO ============ */
   .hero{
@@ -73,18 +143,31 @@
     text-align:center;
     padding:80px 24px 60px;
     position:relative;
-    background-image:
-      linear-gradient(180deg, rgba(23,19,13,0.55) 0%, rgba(23,19,13,0.72) 45%, rgba(23,19,13,0.92) 100%),
-      url('images/hero-background.jpg');
-    background-size:cover;
-    background-position:center 20%;
+    background:var(--ink);
     overflow:hidden;
   }
+  .hero-bg{
+    position:absolute;
+    top:-25%; left:0; right:0; height:150%;
+    background-image:url("images/hero-background.jpg");
+    background-size:cover;
+    background-position:center 20%;
+    will-change:transform;
+    z-index:0;
+  }
+  .hero-overlay{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(23,19,13,0.55) 0%, rgba(23,19,13,0.72) 45%, rgba(23,19,13,0.92) 100%);
+    z-index:1;
+  }
+  .hero-content{position:relative; z-index:2; display:flex; flex-direction:column; align-items:center;}
   .hero-logo{
     width:min(560px, 84vw);
     margin-bottom:26px;
     filter:drop-shadow(0 12px 30px rgba(0,0,0,0.45));
+    animation:logoIn 1.1s var(--ease-out) both;
   }
+  @keyframes logoIn{from{opacity:0; transform:scale(0.92);} to{opacity:1; transform:scale(1);}}
   .hero p.sub{
     max-width:580px;
     font-size:20px;
@@ -92,7 +175,9 @@
     color:var(--paper-dim);
     margin-bottom:34px;
     line-height:1.6;
+    animation:fadeUp 1s var(--ease-out) 0.25s both;
   }
+  @keyframes fadeUp{from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);}}
   .date-badge{
     position:relative;
     background:var(--paper);
@@ -111,6 +196,13 @@
       29% 92%, 23% 99%, 17% 94%, 11% 100%, 5% 92%, 0% 92%
     );
     box-shadow:var(--shadow);
+    animation:stamp 0.7s cubic-bezier(.2,1.5,.4,1) 0.5s both;
+  }
+  @keyframes stamp{
+    0%{opacity:0; transform:scale(1.15);}
+    55%{opacity:1;}
+    78%{transform:scale(0.97);}
+    100%{opacity:1; transform:scale(1);}
   }
   .hero-meta{
     font-family:var(--font-display);
@@ -120,6 +212,7 @@
     color:var(--paper-dim);
     margin-bottom:40px;
     font-weight:500;
+    animation:fadeUp 1s var(--ease-out) 0.72s both;
   }
   .hero-meta strong{color:var(--rose); font-weight:600;}
 
@@ -140,7 +233,20 @@
     color:var(--ink);
     box-shadow:0 12px 30px rgba(200,156,142,0.25);
   }
-  .btn-primary:hover{background:var(--rose-deep); transform:translateY(-2px); box-shadow:0 16px 36px rgba(200,156,142,0.35);}
+  .btn-primary:hover{background:var(--rose-deep); color:var(--ink); transform:translateY(-2px); box-shadow:0 16px 36px rgba(200,156,142,0.35);}
+  .hero .btn-primary{animation:fadeUp 1s var(--ease-out) 0.88s both;}
+
+  /* Shimmer sweep for inviting buttons */
+  .btn-shimmer{position:relative; overflow:hidden;}
+  .btn-shimmer::after{
+    content:"";
+    position:absolute; top:0; left:-60%;
+    width:45%; height:100%;
+    background:linear-gradient(100deg, transparent, rgba(255,255,255,0.45), transparent);
+    transform:skewX(-18deg);
+    animation:sweep 3.2s ease-in-out infinite;
+  }
+  @keyframes sweep{0%{left:-60%;} 60%,100%{left:130%;}}
 
   .scroll-cue{
     margin-top:52px;
@@ -150,17 +256,19 @@
     text-transform:uppercase;
     color:var(--paper-dim);
     display:flex; flex-direction:column; align-items:center; gap:8px;
-    opacity:0.7;
+    animation:fadeUp 1s var(--ease-out) 1s both;
   }
-  .scroll-cue span{
+  .scroll-cue .cue-line{
     width:1px; height:30px;
     background:linear-gradient(var(--rose), transparent);
     animation:cue 1.8s ease-in-out infinite;
   }
+  .scroll-cue .cue-text{animation:cueFade 1.8s ease-in-out infinite;}
   @keyframes cue{
     0%,100%{transform:scaleY(1); opacity:0.5;}
     50%{transform:scaleY(1.3); opacity:1;}
   }
+  @keyframes cueFade{0%,100%{opacity:0.4;} 50%{opacity:0.9;}}
 
   /* ============ SECTION GENERIC ============ */
   .section{padding:110px 0;}
@@ -179,6 +287,15 @@
     color:var(--paper-dim);
     font-size:18px;
   }
+
+  /* Decorative animated rose rule */
+  .rose-rule{
+    height:1px; background:var(--rose);
+    transform:scaleX(0); transform-origin:left;
+    transition:transform 0.9s var(--ease-out);
+    margin-bottom:40px;
+  }
+  .rose-rule.in{transform:scaleX(1);}
 
   /* DOR / PARA QUEM */
   .quem-grid{
@@ -199,12 +316,14 @@
   }
   .quem-list li:first-child{padding-top:0;}
   .quem-list li::before{
-    content:"◦";
+    content:"â¦";
     color:var(--rose);
     font-size:22px;
     line-height:1;
   }
   .badge-inedito{
+    position:relative;
+    overflow:hidden;
     display:inline-block;
     font-family:var(--font-display);
     font-size:11px;
@@ -216,6 +335,14 @@
     padding:8px 16px;
     margin-bottom:22px;
   }
+  .badge-inedito::after{
+    content:"";
+    position:absolute; top:0; left:-60%;
+    width:50%; height:100%;
+    background:linear-gradient(100deg, transparent, rgba(255,255,255,0.5), transparent);
+    transform:skewX(-18deg);
+    animation:sweep 3.6s ease-in-out infinite;
+  }
 
   /* QUOTE BREAK */
   .quote-break{
@@ -225,27 +352,58 @@
     align-items:center;
     justify-content:center;
     text-align:center;
-    background-image:
-      linear-gradient(180deg, rgba(23,19,13,0.55) 0%, rgba(23,19,13,0.78) 100%),
-      url('images/quote-break-background.jpg');
+    background:var(--ink);
+    padding:100px 24px;
+    overflow:hidden;
+  }
+  .quote-bg{
+    position:absolute;
+    top:-45%; left:0; right:0; height:190%;
+    background-image:url("images/quote-break-background.jpg");
     background-size:cover;
     background-position:center 25%;
-    padding:100px 24px;
+    will-change:transform;
+    z-index:0;
   }
-  .quote-break .script{
-    font-size:clamp(40px, 7vw, 74px);
-    color:var(--paper);
-    max-width:800px;
+  .quote-overlay{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(23,19,13,0.55) 0%, rgba(23,19,13,0.78) 100%);
+    z-index:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+  .quote-break .quote-content{position:relative; z-index:2; max-width:620px;}
+  .quote-break .quote-script{
+    font-family:var(--font-script);
     line-height:1.15;
+    font-size:clamp(30px, 6vw, 52px);
+    color:var(--paper);
+    width:400px;
+    max-width:90vw;
+    opacity:0;
+    transform:translateY(34px);
+    transition:opacity 1.1s var(--ease-out) 0.7s, transform 1.1s var(--ease-out) 0.7s;
   }
-  .quote-break p.tag{
-    margin-top:24px;
+  .quote-break .quote-script.in{opacity:1; transform:translateY(0);}
+  .quote-break p.quote-tag{
+    margin-top:26px;
     font-family:var(--font-display);
-    font-size:13px;
-    letter-spacing:0.2em;
+    font-size:15.5px;
+    font-weight:600;
+    letter-spacing:0.1em;
+    line-height:1.5;
     text-transform:uppercase;
-    color:var(--rose);
+    color:var(--paper-dim);
+    width:400px;
+    max-width:90vw;
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity 0.9s var(--ease-out) 1s, transform 0.9s var(--ease-out) 1s;
   }
+  .quote-break p.quote-tag.in{opacity:1; transform:translateY(0);}
 
   /* POSICIONAMENTO / PRODUTO / PREVISIBILIDADE */
   .base-grid{
@@ -258,7 +416,14 @@
   .base-card{
     background:var(--ink);
     padding:42px 32px;
+    position:relative;
+    opacity:0;
+    transform:translateY(28px);
+    border-top:1px solid transparent;
+    transition:opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out), border-color 0.3s ease;
   }
+  .base-card.in{opacity:1; transform:translateY(0);}
+  .base-card:hover{transform:translateY(-4px); border-top-color:var(--rose);}
   .base-card .eyebrow{margin-bottom:16px;}
   .base-card h3{
     font-family:var(--font-body);
@@ -270,7 +435,7 @@
   }
   .base-card p{color:var(--paper-dim); font-size:16.5px;}
 
-  /* TRANSFORMAÇÃO */
+  /* TRANSFORMAÃÃO */
   .plan-grid{
     display:grid;
     grid-template-columns:repeat(3, 1fr);
@@ -281,14 +446,20 @@
   .plan-item{
     background:var(--ink);
     padding:36px 30px;
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
   }
+  .plan-item.in{opacity:1; transform:translateY(0);}
   .plan-item .num{
     font-family:var(--font-script);
     font-size:34px;
     color:var(--rose);
     display:block;
     margin-bottom:12px;
+    transition:color 0.4s ease;
   }
+  .plan-item:hover .num{color:var(--gold);}
   .plan-item h3{
     font-family:var(--font-display);
     font-size:14.5px;
@@ -310,12 +481,19 @@
     background:var(--paper);
     padding:14px 14px 20px;
     box-shadow:var(--shadow);
-    transform:rotate(var(--r, -1.5deg));
+    opacity:0;
+    transition:opacity 0.7s var(--ease-out), transform 0.6s var(--ease-out), box-shadow 0.4s ease;
   }
-  .depo-card:nth-child(1){--r:-2deg;}
-  .depo-card:nth-child(2){--r:1.5deg;}
-  .depo-card:nth-child(3){--r:-1deg;}
-  .depo-card:nth-child(4){--r:2deg;}
+  .depo-card:nth-child(1){--r:-2deg;   transform:translateX(-20px) rotate(-2deg);}
+  .depo-card:nth-child(2){--r:1.5deg;  transform:translateX(20px) rotate(1.5deg);}
+  .depo-card:nth-child(3){--r:-1deg;   transform:translateX(-20px) rotate(-1deg);}
+  .depo-card:nth-child(4){--r:2deg;    transform:translateX(20px) rotate(2deg);}
+  .depo-card.in{opacity:1; transform:rotate(var(--r));}
+  .depo-card:hover{
+    transform:rotate(0deg) scale(1.04) translateY(-6px);
+    z-index:5;
+    box-shadow:0 30px 60px rgba(0,0,0,0.45);
+  }
   .depo-card img{width:100%; border:1px solid rgba(33,28,20,0.08);}
   .depo-card .tape{
     display:block;
@@ -323,14 +501,24 @@
     background:rgba(200,156,142,0.55);
     margin:-30px auto 12px;
     position:relative;
+    overflow:hidden;
     z-index:2;
   }
+  .depo-card .tape::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(100deg, transparent, rgba(255,255,255,0.55), transparent);
+    transform:translateX(-120%);
+    animation:tapeShimmer 3.6s ease-in-out infinite;
+  }
+  @keyframes tapeShimmer{0%{transform:translateX(-120%);} 60%,100%{transform:translateX(220%);}}
 
-  /* ============ INGRESSOS — TICKETS ============ */
+  /* ============ INGRESSOS â TICKETS ============ */
   .tickets{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:40px;
+    perspective:1400px;
   }
   .ticket{
     position:relative;
@@ -339,7 +527,12 @@
     box-shadow:var(--shadow);
     display:flex;
     flex-direction:column;
+    opacity:0;
+    transform:rotateY(8deg) translateY(20px);
+    transform-origin:center left;
+    transition:opacity 0.8s var(--ease-out), transform 0.85s var(--ease-out);
   }
+  .ticket.in{opacity:1; transform:rotateY(0deg) translateY(0);}
   .ticket-top{
     padding:38px 36px 30px;
     position:relative;
@@ -395,7 +588,7 @@
     gap:10px;
     color:var(--ink-soft);
   }
-  .ticket-body li::before{content:"—"; color:var(--gold); flex-shrink:0;}
+  .ticket-body li::before{content:"â"; color:var(--gold); flex-shrink:0;}
   .ticket-body li strong{color:var(--ink);}
   .ticket-cta{margin-top:auto;}
   .ticket-cta a{
@@ -404,8 +597,10 @@
     width:100%;
     background:var(--ink);
     color:var(--paper);
+    position:relative;
+    overflow:hidden;
   }
-  .ticket-cta a:hover{background:var(--moss);}
+  .ticket-cta a:hover{background:var(--moss); color:var(--paper);}
   .ticket-note{
     font-family:var(--font-display);
     font-size:12px;
@@ -418,6 +613,11 @@
     outline:2px solid var(--rose);
     outline-offset:-2px;
   }
+  .ticket-premium .ticket-cta a{animation:pulseRose 2.4s ease-in-out infinite;}
+  @keyframes pulseRose{
+    0%,100%{box-shadow:0 0 0 0 rgba(200,156,142,0);}
+    50%{box-shadow:0 0 0 7px rgba(200,156,142,0.28);}
+  }
   .ticket-flag{
     position:absolute;
     top:0; right:0;
@@ -429,7 +629,30 @@
     letter-spacing:0.1em;
     text-transform:uppercase;
     padding:8px 16px;
+    display:flex;
+    align-items:center;
+    gap:7px;
+    z-index:3;
   }
+  .ticket-flag::before{
+    content:"";
+    width:7px; height:7px;
+    border-radius:50%;
+    background:var(--ink);
+    animation:blinkDot 1.4s ease-in-out infinite;
+  }
+  @keyframes blinkDot{0%,100%{opacity:1;} 50%{opacity:0.2;}}
+
+  /* Ripple */
+  .ripple{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(244,238,225,0.5);
+    transform:scale(0);
+    animation:ripple 0.6s ease-out;
+    pointer-events:none;
+  }
+  @keyframes ripple{to{transform:scale(4); opacity:0;}}
 
   /* RITUAL */
   .ritual-grid{
@@ -438,16 +661,28 @@
     gap:56px;
     align-items:center;
   }
-  .ritual-photos img{width:100%; box-shadow:var(--shadow);}
+  .ritual-frame{overflow:hidden; box-shadow:var(--shadow); border-radius:14px;}
+  .ritual-frame img{width:100%; display:block; will-change:transform;}
   .ritual-text p{color:var(--paper-dim); font-size:19px; margin-bottom:18px;}
   .ritual-text p strong{color:var(--paper); font-weight:600;}
 
-  /* PROGRAMAÇÃO */
-  .timeline{border-left:1px solid var(--line); margin-left:6px;}
+  /* PROGRAMAÃÃO */
+  .timeline{position:relative; border-left:1px solid var(--line); margin-left:6px;}
+  .tl-progress{
+    position:absolute; left:-1px; top:0;
+    width:1px; height:100%;
+    background:var(--rose);
+    transform:scaleY(0);
+    transform-origin:top;
+  }
   .tl-item{
     position:relative;
     padding:0 0 42px 34px;
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
   }
+  .tl-item.in{opacity:1; transform:translateY(0);}
   .tl-item:last-child{padding-bottom:0;}
   .tl-item::before{
     content:"";
@@ -456,6 +691,12 @@
     border-radius:50%;
     background:var(--rose);
     border:2px solid var(--ink-soft);
+    z-index:2;
+  }
+  .tl-item.in::before{animation:pointPulse 0.9s ease-out;}
+  @keyframes pointPulse{
+    0%{box-shadow:0 0 0 0 rgba(200,156,142,0.55);}
+    100%{box-shadow:0 0 0 13px rgba(200,156,142,0);}
   }
   .tl-time{
     font-family:var(--font-display);
@@ -476,10 +717,9 @@
     gap:64px;
     align-items:center;
   }
-  .about-photo{
-    width:100%;
-    box-shadow:var(--shadow);
-  }
+  .about-frame{overflow:hidden; box-shadow:var(--shadow); border-radius:50%; aspect-ratio:1/1; max-width:420px; margin:0 auto;}
+  .about-frame img{height:100%; object-fit:cover;}
+  .about-frame img{width:100%; display:block; will-change:transform;}
   .about-text p{color:var(--paper-dim); font-size:19px; margin-bottom:18px;}
   .about-text p strong{color:var(--paper); font-weight:600;}
   .about-signature{
@@ -487,39 +727,68 @@
     font-size:34px;
     color:var(--rose);
     margin-top:20px;
+    display:inline-block;
   }
+  html.js .about-signature{
+    clip-path:inset(0 100% 0 0);
+    transition:clip-path 1.5s var(--ease-out);
+  }
+  html.js .about-signature.in{clip-path:inset(0 0 0 0);}
 
   /* FAQ */
   .faq{max-width:760px;}
-  details{
+  .faq-item{
+    position:relative;
     border-bottom:1px solid var(--line);
-    padding:24px 0;
   }
-  summary{
+  .faq-fill{
+    position:absolute; left:0; bottom:-1px;
+    height:1px; width:100%;
+    background:var(--rose);
+    transform:scaleX(0); transform-origin:left;
+    transition:transform 0.5s var(--ease-out);
+  }
+  .faq-item.open .faq-fill{transform:scaleX(1);}
+  .faq-q{
+    width:100%;
+    background:none;
+    border:none;
     cursor:pointer;
-    list-style:none;
+    text-align:left;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    gap:20px;
+    padding:24px 0;
+    font-family:var(--font-body);
     font-size:18px;
     font-weight:600;
     color:var(--paper);
+    line-height:1.4;
   }
-  summary::-webkit-details-marker{display:none;}
-  summary::after{
-    content:"+";
-    font-family:var(--font-display);
-    font-size:22px;
-    color:var(--rose);
-    transition:transform 0.3s ease;
+  .faq-icon{
+    position:relative;
+    width:18px; height:18px;
     flex-shrink:0;
-    margin-left:20px;
+    transition:transform 0.3s var(--ease-out);
   }
-  details[open] summary::after{transform:rotate(45deg);}
-  details p{
+  .faq-icon::before, .faq-icon::after{
+    content:"";
+    position:absolute;
+    background:var(--rose);
+  }
+  .faq-icon::before{left:0; right:0; top:50%; height:2px; margin-top:-1px;}
+  .faq-icon::after{top:0; bottom:0; left:50%; width:2px; margin-left:-1px;}
+  .faq-item.open .faq-icon{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.45s var(--ease-out);
+  }
+  .faq-a-inner{padding:0 0 24px;}
+  .faq-a-inner p{
     color:var(--paper-dim);
     font-size:16.5px;
-    margin-top:16px;
     max-width:640px;
   }
 
@@ -527,10 +796,22 @@
   .final-cta{
     text-align:center;
     padding:130px 24px;
-    background:
-      radial-gradient(ellipse 80% 60% at 50% 100%, rgba(200,156,142,0.15), transparent 60%),
-      var(--ink);
+    background:var(--ink);
     border-top:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  .final-cta::before{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse 80% 60% at 50% 100%, rgba(200,156,142,0.18), transparent 60%);
+    animation:breathe 4s ease-in-out infinite;
+    z-index:0;
+  }
+  .final-cta > *{position:relative; z-index:1;}
+  @keyframes breathe{
+    0%,100%{transform:scale(1); opacity:0.75;}
+    50%{transform:scale(1.12); opacity:1;}
   }
   .final-cta .script{font-size:clamp(30px,5vw,46px); color:var(--rose); margin-bottom:14px;}
   .final-cta h2{
@@ -564,14 +845,19 @@
     align-items:center;
     justify-content:space-between;
     gap:16px;
-    transform:translateY(110%);
-    transition:transform 0.4s ease;
+    opacity:0;
+    transform:translateY(120%);
+    transition:transform 0.55s var(--ease-out), opacity 0.45s ease;
     z-index:50;
   }
-  .sticky-bar.show{transform:translateY(0);}
+  .sticky-bar.show{transform:translateY(0); opacity:1;}
   .sticky-bar .info{font-family:var(--font-display); font-size:12px; color:var(--paper-dim);}
   .sticky-bar .info strong{color:var(--paper); display:block; font-size:16px; font-family:var(--font-body);}
-  .sticky-bar .btn{padding:12px 24px; font-size:11px; white-space:nowrap;}
+  .sticky-bar .btn{padding:12px 24px; font-size:11px; white-space:nowrap; animation:stickyPulse 2.4s ease-in-out infinite;}
+  @keyframes stickyPulse{
+    0%,100%{box-shadow:0 12px 30px rgba(200,156,142,0.25);}
+    50%{box-shadow:0 12px 42px rgba(200,156,142,0.55);}
+  }
 
   @media (max-width:860px){
     .quem-grid, .tickets, .about-grid, .ritual-grid{grid-template-columns:1fr;}
@@ -582,120 +868,146 @@
     .ticket-perf::before{left:-11px;}
     .ticket-perf::after{right:-11px;}
   }
+
+  /* ============ REDUCED MOTION ============ */
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation:none !important;
+      transition:none !important;
+    }
+    html{scroll-behavior:auto;}
+    .reveal, .stagger-item, .base-card, .plan-item, .depo-card, .ticket, .tl-item, .rose-rule,
+    .quote-break .quote-script, .quote-break p.quote-tag,
+    .hero-logo, .hero p.sub, .date-badge, .hero-meta, .hero .btn-primary, .scroll-cue{
+      opacity:1 !important;
+      transform:none !important;
+      clip-path:none !important;
+    }
+    .about-signature{clip-path:none !important;}
+    .tl-progress{transform:scaleY(1) !important;}
+    .faq-a{transition:none !important;}
+  }
 </style>
 </head>
 <body>
 
   <!-- HERO -->
   <section class="hero">
-    <img class="hero-logo" src="images/hero-logo.png" alt="Chama Que Vem — Business Planner">
-    <p class="sub">Você já sabe manifestar e segue sonhando grande, mas sem os resultados esperados.<br>Chegou a hora de estruturar seu negócio para chamar a virada que tanto deseja e merece!</p>
+    <div class="hero-bg" data-parallax="0.18"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <img class="hero-logo" src="images/hero-logo.png" alt="Chama Que Vem â Business Planner">
+      <p class="sub" style="font-style:italic; font-weight:500;">VocÃª jÃ¡ sabe manifestar e segue sonhando grande,<br>mas sem os resultados esperados.<br>Chegou a hora de estruturar seu negÃ³cio para chamar<br>a virada que tanto deseja e merece!</p>
 
-    <div class="date-badge">08 / 08</div>
-    <div class="hero-meta">Sábado · <strong>10h às 16h</strong> · Ao vivo e online</div>
+      <div class="date-badge">08 / 08</div>
+      <div class="hero-meta" style="font-size:15px;">SÃ¡bado Â· <strong>10h Ã s 16h</strong> Â· Ao vivo e online</div>
 
-    <a href="#ingressos" class="btn btn-primary">Quero garantir minha vaga</a>
+      <a href="#ingressos" class="btn btn-primary">Quero garantir minha vaga</a>
 
-    <div class="scroll-cue"><span></span>Role para conhecer o evento</div>
+      <div class="scroll-cue"><span class="cue-line"></span><span class="cue-text">Role para conhecer o evento</span></div>
+    </div>
   </section>
 
-  <!-- PARA QUEM É / DOR -->
+  <!-- PARA QUEM Ã / DOR -->
   <section class="section">
     <div class="wrap">
       <div class="quem-grid">
-        <div class="quem-text reveal">
-          <span class="badge-inedito">Primeira edição · formato inédito</span>
-          <p class="eyebrow" style="margin-bottom:16px;">O CQV | Business Planner é pra você que...</p>
-          <p>É manifestadora do seu fazer no mundo, que acredita no seu potencial e atrai oportunidades — mas escorrega no planejamento e na execução. Não tem previsibilidade financeira e segue com muitas ideias no papel que só te atrapalham a focar e crescer.</p>
-          <p>Eu sei como é ter uma mente que é um universo inteiro de possibilidades, mas na hora de transformar isso em negócio, número e estrutura, alguma coisa trava.</p>
-          <p>Isso não é falta de competência. É o que eu chamo da <strong>Síndrome da Sininho</strong> — viver no encantamento das ideias sem aterrissar a magia em plano. Ou é a síndrome da impostora sussurrando "eu não consigo" bem na hora em que você mais precisava agir.</p>
-          <p>Amadurecer um negócio criativo é isso: continuar acreditando na magia, e também aprender a estruturar. As duas coisas juntas — não uma no lugar da outra.</p>
+        <div class="quem-text" data-stagger="90">
+          <span class="badge-inedito stagger-item">A MAGIA DE SEMPRE EM FORMATO INÃDITO</span>
+          <p class="eyebrow stagger-item" style="margin-bottom:16px;">O CQV | Business Planner Ã© pra vocÃª que...</p>
+          <p class="stagger-item">Ã manifestadora do seu fazer no mundo, que acredita no seu potencial e atrai oportunidades â mas escorrega no planejamento e na execuÃ§Ã£o. NÃ£o tem previsibilidade financeira e segue com muitas ideias no papel que sÃ³ te atrapalham a focar e crescer.</p>
+          <p class="stagger-item">Eu sei como Ã© ter uma mente que Ã© um universo inteiro de possibilidades, mas na hora de transformar isso em negÃ³cio, nÃºmero e estrutura, alguma coisa trava.</p>
+          <p class="stagger-item">Isso nÃ£o Ã© falta de competÃªncia. Ã o que eu chamo da <strong>SÃ­ndrome da Sininho</strong> â viver no encantamento das ideias sem aterrissar a magia em plano. Ou Ã© a sÃ­ndrome da impostora sussurrando "eu nÃ£o consigo" bem na hora em que vocÃª mais precisava agir.</p>
+          <p class="stagger-item">Amadurecer um negÃ³cio criativo Ã© isso: continuar acreditando na magia, e tambÃ©m aprender a estruturar. As duas coisas juntas â nÃ£o uma no lugar da outra.</p>
         </div>
-        <ul class="quem-list reveal">
-          <li>Sua cabeça é um turbilhão de ideias, e você não sabe por onde começar a organizar</li>
-          <li>As metas do seu negócio vivem soltas, sem plano, sem prazo, sem número</li>
-          <li>Você sente que já devia estar cobrando mais, mas não sabe como</li>
-          <li>Seu posicionamento ainda não diz, com clareza, o que só você entrega</li>
-          <li>Você sabe que é capaz — só precisa de estrutura e passo a passo para voar mais alto!</li>
+        <ul class="quem-list" data-stagger="80">
+          <li class="stagger-item">Sua cabeÃ§a Ã© um turbilhÃ£o de ideias, e vocÃª nÃ£o sabe por onde comeÃ§ar a organizar</li>
+          <li class="stagger-item">As metas do seu negÃ³cio vivem soltas, sem plano, sem prazo, sem nÃºmero</li>
+          <li class="stagger-item">VocÃª sente que jÃ¡ devia estar cobrando mais, mas nÃ£o sabe como</li>
+          <li class="stagger-item">Seu posicionamento ainda nÃ£o diz, com clareza, o que sÃ³ vocÃª entrega</li>
+          <li class="stagger-item">VocÃª sabe que Ã© capaz â sÃ³ precisa de estrutura e passo a passo para voar mais alto!</li>
         </ul>
       </div>
     </div>
   </section>
 
   <!-- QUOTE BREAK -->
-  <section class="quote-break reveal">
-    <div>
-      <div class="script">Você é do tamanho dos seus sonhos</div>
-      <p class="tag">E do tamanho da estrutura que você constrói pra sustentá-los</p>
+  <section class="quote-break" data-om-label="motivacional">
+    <div class="quote-bg" data-parallax="0.3"></div>
+    <div class="quote-overlay">
+      <div class="script quote-script">VocÃª Ã© do tamanho dos seus sonhos</div>
+      <p class="quote-tag">E do tamanho da estrutura que vocÃª constrÃ³i pra sustentÃ¡-los</p>
     </div>
+    <div class="quote-content"></div>
   </section>
 
   <!-- POSICIONAMENTO / PRODUTO / PREVISIBILIDADE -->
   <section class="section section-alt">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="eyebrow">Posicionamento · Produto · Previsibilidade</p>
-        <h2>Não existe meta que se sustente sem um posicionamento bem definido, um produto arrebatador e previsibilidade financeira</h2>
-        <p>Essa é a etapa que a maioria das criativas paralisam: organizar a casa, fazer limpas, tomar decisões "frias" e lidar com números! Mas no nosso encontro vamos fazer tudo isso com o jeito Amartt de entregar — com conexão, clareza e objetividade, junto a uma egrégora de mulheres que sonham e realizam.</p>
+        <p class="eyebrow">Posicionamento Â· Produto Â· Previsibilidade</p>
+        <h2>NÃ£o existe meta que se sustente sem um posicionamento bem definido, um produto arrebatador e previsibilidade financeira</h2>
+        <p>Essa Ã© a etapa que a maioria das criativas paralisam: organizar a casa, fazer limpas, tomar decisÃµes "frias" e lidar com nÃºmeros! Mas no nosso encontro vamos fazer tudo isso com o jeito Amartt de entregar â com conexÃ£o, clareza e objetividade, junto a uma egrÃ©gora de mulheres que sonham e realizam.</p>
       </div>
-      <div class="base-grid reveal">
+      <div class="rose-rule"></div>
+      <div class="base-grid" data-stagger="100">
         <div class="base-card">
           <p class="eyebrow">Posicionamento</p>
-          <h3>Você é única. Seu negócio precisa dizer isso.</h3>
-          <p>Pra quem você fala, o que só você entrega, e por que alguém escolheria você — e não a concorrência. Sem clareza aqui, todo seu negócio fica solto e nem adianta postar mil conteúdos.</p>
+          <h3>VocÃª Ã© Ãºnica. Seu negÃ³cio precisa dizer isso.</h3>
+          <p>Pra quem vocÃª fala, o que sÃ³ vocÃª entrega, e por que alguÃ©m escolheria vocÃª â e nÃ£o a concorrÃªncia. Sem clareza aqui, todo seu negÃ³cio fica solto e nem adianta postar mil conteÃºdos.</p>
         </div>
         <div class="base-card">
           <p class="eyebrow">Produto</p>
-          <h3>O que você vende precisa fazer sentido pra quem compra.</h3>
-          <p>Oferta clara, entrega definida, valor percebido à altura do que você cobra — e o seu jeito único de fazer, impresso na sua proposta de valor. A ponte entre "eu tenho um monte de ideias" e "eu tenho um negócio que funciona".</p>
+          <h3>O que vocÃª vende precisa fazer sentido pra quem compra.</h3>
+          <p>Oferta clara, entrega definida, valor percebido Ã  altura do que vocÃª cobra â e o seu jeito Ãºnico de fazer, impresso na sua proposta de valor. A ponte entre "eu tenho um monte de ideias" e "eu tenho um negÃ³cio que funciona".</p>
         </div>
         <div class="base-card">
           <p class="eyebrow">Previsibilidade</p>
-          <h3>Saber quanto você vai ganhar nos próximos meses é fundamental.</h3>
-          <p>Planejar suas metas de negócio, organizar seu funil de vendas e estratégias de atração pra converter mais e melhor — aumentando o Life Time Value da sua cliente, ou seja, ela volta mais vezes.</p>
+          <h3>Saber quanto vocÃª vai ganhar nos prÃ³ximos meses Ã© fundamental.</h3>
+          <p>Planejar suas metas de negÃ³cio, organizar seu funil de vendas e estratÃ©gias de atraÃ§Ã£o pra converter mais e melhor â aumentando o Life Time Value da sua cliente, ou seja, ela volta mais vezes.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- O QUE VOCÊ SAI SABENDO -->
+  <!-- O QUE VOCÃ SAI SABENDO -->
   <section class="section">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">1 dia que vale o ano todo!</p>
-        <h2>Você chega com ideias soltas. Sai com um plano de ação e direção para o seu negócio criativo.</h2>
-        <p>Ao longo das 6 horas, construiremos juntas — passo a passo, sem pular etapa — as peças que sustentam seu negócio para você agir e alcançar o que merece.</p>
+        <h2>VocÃª chega com ideias soltas. Sai com um plano de aÃ§Ã£o e direÃ§Ã£o para o seu negÃ³cio criativo.</h2>
+        <p>Ao longo das 6 horas, construiremos juntas â passo a passo, sem pular etapa â as peÃ§as que sustentam seu negÃ³cio para vocÃª agir e alcanÃ§ar o que merece.</p>
       </div>
-      <div class="plan-grid reveal">
+      <div class="plan-grid">
         <div class="plan-item">
-          <span class="num">1</span>
+          <span class="num" data-num="1">1</span>
           <h3>Posicionamento</h3>
-          <p>O que te torna única, com clareza — não com achismo.</p>
+          <p>O que te torna Ãºnica, com clareza â nÃ£o com achismo.</p>
         </div>
         <div class="plan-item">
-          <span class="num">2</span>
-          <h3>Produto & oferta</h3>
-          <p>O que você vende, pra quem, e o problema real que resolve.</p>
+          <span class="num" data-num="2">2</span>
+          <h3>Produto &amp; oferta</h3>
+          <p>O que vocÃª vende, pra quem, e o problema real que resolve.</p>
         </div>
         <div class="plan-item">
-          <span class="num">3</span>
-          <h3>Diagnóstico</h3>
-          <p>Onde o negócio está de verdade hoje, sem ilusão nem autocrítica.</p>
+          <span class="num" data-num="3">3</span>
+          <h3>DiagnÃ³stico</h3>
+          <p>Onde o negÃ³cio estÃ¡ de verdade hoje, sem ilusÃ£o nem autocrÃ­tica.</p>
         </div>
         <div class="plan-item">
-          <span class="num">4</span>
+          <span class="num" data-num="4">4</span>
           <h3>Metas financeiras</h3>
-          <p>Não é chute — criaremos metas reais e tangíveis.</p>
+          <p>NÃ£o Ã© chute â criaremos metas reais e tangÃ­veis.</p>
         </div>
         <div class="plan-item">
-          <span class="num">5</span>
+          <span class="num" data-num="5">5</span>
           <h3>Rotina empreendedora</h3>
-          <p>Como manter o pulso e a conexão com sua essência.</p>
+          <p>Como manter o pulso e a conexÃ£o com sua essÃªncia.</p>
         </div>
         <div class="plan-item">
-          <span class="num">6</span>
-          <h3>Plano até dezembro/2026</h3>
-          <p>Passos concretos, com prazo, pra sair do papel e virar ação.</p>
+          <span class="num" data-num="6">6</span>
+          <h3>Plano atÃ© dezembro/2026</h3>
+          <p>Passos concretos, com prazo, pra sair do papel e virar aÃ§Ã£o.</p>
         </div>
       </div>
     </div>
@@ -705,21 +1017,21 @@
   <section class="section section-alt">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="eyebrow">Quem já viveu o Chama Que Vem</p>
-        <h2>Não é só sobre planejar. É sobre o que muda depois.</h2>
+        <p class="eyebrow">Quem jÃ¡ viveu o Chama Que Vem</p>
+        <h2>NÃ£o Ã© sÃ³ sobre planejar. Ã sobre o que muda depois.</h2>
       </div>
-      <div class="depo-grid reveal">
+      <div class="depo-grid">
         <div class="depo-card">
           <span class="tape"></span>
           <img src="images/depoimento-1.jpg" alt="Depoimento de cliente Amartt">
         </div>
         <div class="depo-card">
           <span class="tape"></span>
-          <img src="images/depoimento-2.jpg" alt="Depoimento de cliente Amartt">
+          <img src="images/depoimento-3.jpg" alt="Depoimento de cliente Amartt">
         </div>
         <div class="depo-card">
           <span class="tape"></span>
-          <img src="images/depoimento-3.jpg" alt="Depoimento de cliente Amartt">
+          <img src="images/depoimento-2.jpg" alt="Depoimento de cliente Amartt">
         </div>
         <div class="depo-card">
           <span class="tape"></span>
@@ -735,10 +1047,10 @@
       <div class="section-head reveal">
         <p class="eyebrow">Ingressos</p>
         <h2>Escolha como quer viver esse dia</h2>
-        <p>As duas opções te dão acesso completo ao evento ao vivo. A diferença está no que acontece depois — e o quanto de acompanhamento você quer levar com você.</p>
+        <p>As duas opÃ§Ãµes te dÃ£o acesso completo ao evento ao vivo. A diferenÃ§a estÃ¡ no que acontece depois â e o quanto de acompanhamento vocÃª quer levar com vocÃª.</p>
       </div>
 
-      <div class="tickets reveal">
+      <div class="tickets">
         <!-- LOBA -->
         <div class="ticket">
           <div class="ticket-top">
@@ -750,8 +1062,8 @@
           <div class="ticket-perf"></div>
           <div class="ticket-body">
             <ul>
-              <li>Participação ao vivo nas 6 horas de evento <strong>+ gravação por 1 mês</strong></li>
-              <li>Material de apoio em <strong>PDF</strong> para construir seu plano durante o dia</li>
+              <li>ParticipaÃ§Ã£o ao vivo nas 6 horas de evento <strong>+ gravaÃ§Ã£o por 1 mÃªs</strong></li>
+              <li><strong>Material de apoio em PDF</strong> para construir seu plano durante o evento</li>
               <li>Acesso ao grupo exclusivo de participantes</li>
             </ul>
             <div class="ticket-cta">
@@ -773,8 +1085,8 @@
           <div class="ticket-body">
             <ul>
               <li><strong>Tudo do ticket Loba</strong></li>
-              <li>+ <strong>40 minutos comigo</strong>, individual, nas semanas seguintes ao evento</li>
-              <li>Uma consultoria pontual de acompanhamento — pra destravar o que ficou aberto no seu plano</li>
+              <li><strong>40 minutos de consultoria individual</strong> com LÃ­via Amartt, a ser agendada nas semanas seguintes ao evento</li>
+              <li>Uma consultoria pontual de acompanhamento â pra destravar o que ficou aberto no seu plano</li>
             </ul>
             <div class="ticket-cta">
               <a href="https://chk.eduzz.com/39VKDRNKWR" class="btn">Vou como Rainha</a>
@@ -790,77 +1102,82 @@
     <div class="wrap">
       <div class="ritual-grid">
         <div class="ritual-photos reveal">
-          <img src="images/ritual-planejamento.jpg" alt="Planejamento em papel, ao ar livre">
+          <div class="ritual-frame">
+            <img src="images/ritual-planejamento.jpg" alt="Planejamento em papel, ao ar livre" data-parallax="0.05" data-scale="1.22">
+          </div>
         </div>
-        <div class="ritual-text reveal">
-          <p class="eyebrow" style="margin-bottom:16px;">O ritual do planejamento</p>
-          <p>Planejar, aqui, não é preencher planilha fria. É um <strong>ritual</strong> — papel, caneta, tempo pra sentir onde seu negócio quer ir. A estrutura e a magia caminham juntas, porque um negócio criativo não sustenta sem as duas.</p>
-          <p>Por isso todo o material do dia é pensado pra ser vivido com presença, não só preenchido no automático. <strong>Planejar também é um ato de merecimento.</strong></p>
+        <div class="ritual-text" data-stagger="120">
+          <p class="eyebrow stagger-item" style="margin-bottom:16px;">O ritual do planejamento</p>
+          <p class="stagger-item">Planejar, aqui, nÃ£o Ã© preencher planilha fria. Ã um <strong>ritual</strong> â papel, caneta, tempo pra sentir onde seu negÃ³cio quer ir. A estrutura e a magia caminham juntas, porque um negÃ³cio criativo nÃ£o sustenta sem as duas.</p>
+          <p class="stagger-item">Por isso todo o material do dia Ã© pensado pra ser vivido com presenÃ§a, nÃ£o sÃ³ preenchido no automÃ¡tico. <strong>Planejar tambÃ©m Ã© um ato de merecimento.</strong></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROGRAMAÇÃO -->
-  <section class="section">
+  <!-- PROGRAMAÃÃO -->
+  <section class="section" data-om-label="programaÃ§Ã£o">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="eyebrow">Programação</p>
+        <p class="eyebrow">ProgramaÃ§Ã£o</p>
         <h2>O que viveremos ao longo do nosso evento CQV | Business Planner</h2>
       </div>
-      <div class="timeline reveal">
+      <div class="timeline">
+        <span class="tl-progress"></span>
         <div class="tl-item">
           <div class="tl-time">10h00</div>
           <h4>Abertura do evento, ao vivo e online via Zoom</h4>
-          <p>Com momento de boas-vindas e meditação criativa.</p>
+          <p>Com momento de boas-vindas e meditaÃ§Ã£o criativa.</p>
         </div>
         <div class="tl-item">
           <div class="tl-time">11h00</div>
           <h4>Posicionamento</h4>
-          <p>O que te torna única, com clareza — não com achismo.</p>
+          <p>O que te torna Ãºnica, com clareza â nÃ£o com achismo.</p>
         </div>
         <div class="tl-item">
           <div class="tl-time">12h15</div>
-          <h4>Diagnóstico</h4>
-          <p>Onde o negócio está de verdade hoje, sem ilusão nem autocrítica.</p>
+          <h4>DiagnÃ³stico</h4>
+          <p>Onde o negÃ³cio estÃ¡ de verdade hoje, sem ilusÃ£o nem autocrÃ­tica.</p>
         </div>
         <div class="tl-item">
           <div class="tl-time">13h00</div>
-          <h4>Pausa para almoço</h4>
+          <h4>Pausa para almoÃ§o</h4>
           <p>Um respiro real antes da segunda metade do dia.</p>
         </div>
         <div class="tl-item">
           <div class="tl-time">13h40</div>
-          <h4>Produto & oferta</h4>
-          <p>O que você vende, pra quem, e o problema real que resolve.</p>
+          <h4>Produto &amp; oferta</h4>
+          <p>O que vocÃª vende, pra quem, e o problema real que resolve.</p>
         </div>
         <div class="tl-item">
           <div class="tl-time">15h00</div>
           <h4>Metas financeiras</h4>
-          <p>Não é chute — criaremos metas reais e tangíveis.</p>
+          <p>NÃ£o Ã© chute â criaremos metas reais e tangÃ­veis.</p>
         </div>
         <div class="tl-item">
           <div class="tl-time">15h45</div>
-          <h4>Rotina empreendedora & fechamento</h4>
-          <p>Encerramento do dia e apresentação dos próximos passos.</p>
+          <h4>Rotina empreendedora &amp; fechamento</h4>
+          <p>Encerramento do dia e apresentaÃ§Ã£o dos prÃ³ximos passos.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- SOBRE -->
-  <section class="section section-alt">
+  <section class="section section-alt" data-om-label="bio">
     <div class="wrap">
       <div class="about-grid">
         <div class="reveal">
-          <img class="about-photo" src="images/livia-amartt-sobre.jpg" alt="Lívia Amartt">
+          <div class="about-frame" style="position: relative;">
+            <img src="images/livia-amartt-sobre.jpg" alt="LÃ­via Amartt" data-parallax="0.06" data-scale="1.2">
+          </div>
         </div>
         <div class="about-text reveal">
-          <p class="eyebrow" style="margin-bottom:16px;">Muito prazer, sua Mentora de Negócios Femininos</p>
-          <p>Sou <strong>Lívia Amartt</strong>, fundadora da Amartt. Há <strong>7 anos</strong> ajudo EU-preendedoras — mulheres criativas e multipotenciais — a organizarem suas ideias e transformá-las em seu negócio do coração: rentável e cheio de propósito.</p>
-          <p>O Chama Que Vem nasceu como o encontro em que planejamos as metas do ano. O Business Planner é a próxima maturidade dessa jornada: o dia em que a gente para de só sonhar e senta pra construir, com estrutura, o mapa de como chegar lá — sem perder a magia pelo caminho.</p>
-          <p>Você já é o mulherão que precisa ser pra isso dar certo. Falta só estrutura.</p>
-          <div class="about-signature">Lívia Amartt</div>
+          <p class="eyebrow" style="margin-bottom:16px;">Muito prazer, sua Mentora de NegÃ³cios Femininos</p>
+          <p>Sou <strong>LÃ­via Amartt</strong>, fundadora da Amartt. HÃ¡ <strong>7 anos</strong> ajudo EU-preendedoras â mulheres criativas e multipotenciais â a organizarem suas ideias e transformÃ¡-las em seu negÃ³cio do coraÃ§Ã£o: rentÃ¡vel e cheio de propÃ³sito.</p>
+          <p>O Chama Que Vem nasceu como o encontro em que planejamos as metas do ano. O Business Planner Ã© a prÃ³xima maturidade dessa jornada: o dia em que a gente para de sÃ³ sonhar e senta pra construir, com estrutura, o mapa de como chegar lÃ¡ â sem perder a magia pelo caminho.</p>
+          <p>VocÃª jÃ¡ Ã© o mulherÃ£o que precisa ser pra isso dar certo. Falta sÃ³ estrutura.</p>
+          <div class="about-signature">LÃ­via Amartt</div>
         </div>
       </div>
     </div>
@@ -874,62 +1191,246 @@
         <h2>Antes de decidir</h2>
       </div>
       <div class="faq reveal">
-        <details>
-          <summary>Qual a diferença entre esse evento e o Chama Que Vem tradicional?</summary>
-          <p>O Chama Que Vem é sobre manifestar e planejar as metas do seu ano como um todo. O Business Planner é o próximo passo: um dia inteiro dedicado só ao plano de negócio — posicionamento, produto, preço, financeiro e ação. Se você já fez o Chama Que Vem, esse é o desdobramento natural. Se não fez, também pode começar por aqui.</p>
-        </details>
-        <details>
-          <summary>O evento é gravado? Tem replay?</summary>
-          <p>O foco do dia é a construção em tempo real, junto comigo e com as outras participantes — mas se você não conseguir comparecer, disponibilizo a gravação por até 30 dias após o evento.</p>
-        </details>
-        <details>
-          <summary>Preciso já ter um negócio formalizado?</summary>
-          <p>Não. O evento serve tanto para quem já fatura quanto para quem está estruturando a ideia agora. O que importa é vir disposta a sair com um plano — não com o negócio pronto.</p>
-        </details>
-        <details>
-          <summary>Como funciona a sessão individual do ticket Rainha?</summary>
-          <p>São 40 minutos comigo, marcados nas semanas seguintes ao evento, para aprofundar pontos específicos do plano que você construiu no dia. É uma consultoria pontual de acompanhamento do evento — focada no que ficou em aberto no seu plano.</p>
-        </details>
-        <details>
-          <summary>O ingresso é parcelado?</summary>
-          <p>As opções de pagamento aparecem na hora da inscrição, direto no checkout.</p>
-        </details>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Qual a diferenÃ§a entre esse evento e o Chama Que Vem tradicional?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>O Chama Que Vem Ã© sobre manifestar e planejar as metas do seu ano como um todo. O Business Planner Ã© o prÃ³ximo passo: um dia inteiro dedicado sÃ³ ao plano de negÃ³cio â posicionamento, produto, preÃ§o, financeiro e aÃ§Ã£o. Se vocÃª jÃ¡ fez o Chama Que Vem, esse Ã© o desdobramento natural. Se nÃ£o fez, tambÃ©m pode comeÃ§ar por aqui.</p></div></div>
+          <span class="faq-fill"></span>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">O evento Ã© gravado? Tem replay?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>O foco do dia Ã© a construÃ§Ã£o em tempo real, junto comigo e com as outras participantes â mas se vocÃª nÃ£o conseguir comparecer, disponibilizo a gravaÃ§Ã£o por atÃ© 30 dias apÃ³s o evento.</p></div></div>
+          <span class="faq-fill"></span>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Preciso jÃ¡ ter um negÃ³cio formalizado?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>NÃ£o. O evento serve tanto para quem jÃ¡ fatura quanto para quem estÃ¡ estruturando a ideia agora. O que importa Ã© vir disposta a sair com um plano â nÃ£o com o negÃ³cio pronto.</p></div></div>
+          <span class="faq-fill"></span>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Como funciona a sessÃ£o individual do ticket Rainha?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>SÃ£o 40 minutos comigo, marcados nas semanas seguintes ao evento, para aprofundar pontos especÃ­ficos do plano que vocÃª construiu no dia. Ã uma consultoria pontual de acompanhamento do evento â focada no que ficou em aberto no seu plano.</p></div></div>
+          <span class="faq-fill"></span>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">O ingresso Ã© parcelado?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>As opÃ§Ãµes de pagamento aparecem na hora da inscriÃ§Ã£o, direto no checkout.</p></div></div>
+          <span class="faq-fill"></span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- CTA FINAL -->
   <section class="final-cta reveal">
-    <div class="script">Sábado, 08 de agosto | 10h</div>
-    <h2>Reserve esse dia para mudar a forma como empreende, com mais coragem e maturidade. Saia com o plano, a clareza e a estrutura à altura de quem você é.</h2>
-    <a href="#ingressos" class="btn btn-primary">Quero manifestar essa virada!</a>
+    <div class="script">SÃ¡bado, 08 de agosto | 10h</div>
+    <h2 style="font-size:24px; font-weight:600;">Reserve esse dia para mudar a forma como empreende, com mais coragem e maturidade.<br>Saia com o plano, a clareza e a estrutura Ã  altura de quem vocÃª Ã©.</h2>
+    <a href="#ingressos" class="btn btn-primary btn-shimmer">Quero manifestar essa virada!</a>
   </section>
 
-  <footer>AMARTT · CHAMA QUE VEM | BUSINESS PLANNER · 08/08 · AO VIVO E ONLINE</footer>
+  <footer>AMARTT Â· CHAMA QUE VEM | BUSINESS PLANNER Â· 08/08 Â· AO VIVO E ONLINE</footer>
 
   <div class="sticky-bar" id="stickyBar">
-    <div class="info">08/08 · 10h às 16h<strong>A partir de R$147</strong></div>
+    <div class="info">08/08 Â· 10h Ã s 16h<strong>A partir de R$147</strong></div>
     <a href="#ingressos" class="btn btn-primary">Garantir vaga</a>
   </div>
 
 <script>
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, {threshold:0.15});
-  revealEls.forEach(el=>io.observe(el));
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const hero = document.querySelector('.hero');
-  const bar = document.getElementById('stickyBar');
-  const heroObserver = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(!e.isIntersecting){ bar.classList.add('show'); } else { bar.classList.remove('show'); }
+  // Observe elements once, then run callback
+  function onEnter(nodes, cb, threshold){
+    nodes = Array.prototype.slice.call(nodes);
+    if(!('IntersectionObserver' in window) || reduce){ nodes.forEach(cb); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ cb(e.target); io.unobserve(e.target); }
+      });
+    }, {threshold: threshold || 0.15});
+    nodes.forEach(function(el){ io.observe(el); });
+  }
+
+  // --- Generic block reveals ---
+  onEnter(document.querySelectorAll('.reveal'), function(el){
+    el.style.willChange = 'opacity, transform';
+    el.classList.add('in');
+    el.addEventListener('transitionend', function h(){ el.style.willChange = 'auto'; el.removeEventListener('transitionend', h); });
+  });
+
+  // --- Generic staggered containers ---
+  document.querySelectorAll('[data-stagger]').forEach(function(container){
+    var step = parseInt(container.dataset.stagger, 10) || 80;
+    var items = container.querySelectorAll('.stagger-item');
+    onEnter([container], function(){
+      items.forEach(function(it, i){
+        it.style.transitionDelay = (i * step) + 'ms';
+        it.classList.add('in');
+      });
     });
-  }, {threshold:0});
-  heroObserver.observe(hero);
+  });
+
+  // --- Rose decorative rule ---
+  onEnter(document.querySelectorAll('.rose-rule'), function(el){ el.classList.add('in'); });
+
+  // --- Quote break: sequenced script + tag ---
+  onEnter(document.querySelectorAll('.quote-break'), function(el){
+    var s = el.querySelector('.quote-script');
+    var t = el.querySelector('.quote-tag');
+    if(s){ s.classList.add('in'); }
+    if(t){ t.classList.add('in'); }
+  }, 0.25);
+
+  // --- Signature handwriting sweep ---
+  onEnter(document.querySelectorAll('.about-signature'), function(el){ el.classList.add('in'); }, 0.4);
+
+  // --- Base cards stagger ---
+  var baseGrid = document.querySelector('.base-grid');
+  if(baseGrid){
+    onEnter([baseGrid], function(){
+      baseGrid.querySelectorAll('.base-card').forEach(function(c, i){
+        setTimeout(function(){ c.classList.add('in'); }, i * 100);
+      });
+    });
+  }
+
+  // --- Plan grid: stagger + number count-up ---
+  function countUp(el, target){
+    var dur = 1000, start = null;
+    function tick(now){
+      if(start === null) start = now;
+      var p = Math.min(1, (now - start) / dur);
+      el.textContent = Math.round(p * target);
+      if(p < 1){ requestAnimationFrame(tick); } else { el.textContent = target; }
+    }
+    requestAnimationFrame(tick);
+  }
+  var planGrid = document.querySelector('.plan-grid');
+  if(planGrid){
+    onEnter([planGrid], function(){
+      planGrid.querySelectorAll('.plan-item').forEach(function(item, i){
+        setTimeout(function(){
+          item.classList.add('in');
+          var num = item.querySelector('.num');
+          if(num){
+            var target = parseInt(num.dataset.num || num.textContent, 10);
+            if(!reduce && !isNaN(target)){ num.textContent = '0'; countUp(num, target); }
+            else if(!isNaN(target)){ num.textContent = target; }
+          }
+        }, i * 80);
+      });
+    });
+  }
+
+  // --- Depoimentos stagger ---
+  var depoGrid = document.querySelector('.depo-grid');
+  if(depoGrid){
+    onEnter([depoGrid], function(){
+      depoGrid.querySelectorAll('.depo-card').forEach(function(c, i){
+        setTimeout(function(){ c.classList.add('in'); }, i * 100);
+      });
+    });
+  }
+
+  // --- Tickets flip stagger ---
+  var ticketsWrap = document.querySelector('.tickets');
+  if(ticketsWrap){
+    onEnter([ticketsWrap], function(){
+      ticketsWrap.querySelectorAll('.ticket').forEach(function(t, i){
+        setTimeout(function(){ t.classList.add('in'); }, i * 150);
+      });
+    }, 0.2);
+  }
+
+  // --- Timeline items (appear one by one, point pulses once) ---
+  onEnter(document.querySelectorAll('.tl-item'), function(el){ el.classList.add('in'); }, 0.3);
+
+  // --- Ripple effect on ticket buttons ---
+  document.querySelectorAll('.ticket-cta a').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      var rect = this.getBoundingClientRect();
+      var size = Math.max(rect.width, rect.height);
+      var r = document.createElement('span');
+      r.className = 'ripple';
+      r.style.width = r.style.height = size + 'px';
+      r.style.left = (e.clientX - rect.left - size / 2) + 'px';
+      r.style.top = (e.clientY - rect.top - size / 2) + 'px';
+      this.appendChild(r);
+      setTimeout(function(){ r.remove(); }, 650);
+    });
+  });
+
+  // --- Parallax (rAF) + timeline progress line ---
+  var pEls = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+  var timeline = document.querySelector('.timeline');
+  var tlProgress = document.querySelector('.tl-progress');
+  var ticking = false;
+
+  function update(){
+    var vh = window.innerHeight;
+    if(!reduce){
+      pEls.forEach(function(el){
+        var speed = parseFloat(el.dataset.parallax);
+        var scale = parseFloat(el.dataset.scale) || 1;
+        var c = el.parentElement.getBoundingClientRect();
+        if(c.bottom < -120 || c.top > vh + 120){ return; }
+        var shift = (c.top + c.height / 2 - vh / 2);
+        var y = -shift * speed;
+        el.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0)' + (scale !== 1 ? (' scale(' + scale + ')') : '');
+      });
+    }
+    if(timeline && tlProgress){
+      var r = timeline.getBoundingClientRect();
+      var prog = (vh * 0.82 - r.top) / r.height;
+      prog = Math.max(0, Math.min(1, prog));
+      tlProgress.style.transform = 'scaleY(' + (reduce ? 1 : prog) + ')';
+    }
+    ticking = false;
+  }
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  update();
+
+  // --- FAQ accordion (animated max-height) ---
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    var a = item.querySelector('.faq-a');
+    q.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      if(isOpen){
+        a.style.maxHeight = a.scrollHeight + 'px';
+        requestAnimationFrame(function(){ a.style.maxHeight = '0px'; });
+        item.classList.remove('open');
+        q.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('open');
+        q.setAttribute('aria-expanded', 'true');
+        a.style.maxHeight = a.scrollHeight + 'px';
+        a.addEventListener('transitionend', function te(){
+          if(item.classList.contains('open')){ a.style.maxHeight = 'none'; }
+          a.removeEventListener('transitionend', te);
+        });
+      }
+    });
+  });
+  window.addEventListener('resize', function(){
+    document.querySelectorAll('.faq-item.open .faq-a').forEach(function(a){ a.style.maxHeight = 'none'; });
+  });
+
+  // --- Sticky bar (appears after hero) ---
+  var hero = document.querySelector('.hero');
+  var bar = document.getElementById('stickyBar');
+  if(hero && bar && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting){ bar.classList.add('show'); } else { bar.classList.remove('show'); }
+      });
+    }, {threshold:0});
+    io.observe(hero);
+  }
+})();
 </script>
 
-</body>
-</html>
+
+
+</body></html>
