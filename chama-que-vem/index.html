@@ -618,11 +618,20 @@
   .ticket-body li{
     font-size:16.5px;
     padding:10px 0;
-    display:flex;
-    gap:10px;
+    /* bloco com marcador pendurado: em flex, cada <strong> virava
+       uma coluna e quebrava a frase no meio */
+    position:relative;
+    padding-left:23px;
     color:var(--ink-soft);
   }
-  .ticket-body li::before{content:"✦"; color:var(--gold); flex-shrink:0; font-size:13px; line-height:1.6;}
+  .ticket-body li::before{
+    content:"✦";
+    position:absolute;
+    left:0; top:11px;
+    color:var(--gold);
+    font-size:13px;
+    line-height:1;
+  }
   .ticket-body li strong{color:var(--ink);}
   .ticket-cta{margin-top:auto;}
   .ticket-cta a{
@@ -1335,7 +1344,7 @@
             <p class="eyebrow">Ingresso</p>
             <h3>Chama Que Vem presencial</h3>
             <p class="ticket-sub">12 de dezembro · 9h às 16h · Lumiar — NF/RJ</p>
-            <div class="ticket-price">3x R$99<span class="parcela">sem juros no cartão</span></div>
+            <div class="ticket-price">3x R$119<span class="parcela">sem juros no cartão</span></div>
           </div>
           <div class="ticket-perf"></div>
           <div class="ticket-body">
@@ -1549,7 +1558,7 @@
   <footer>AMARTT · CHAMA QUE VEM PRESENCIAL · 12/12 · LUMIAR — NOVA FRIBURGO/RJ</footer>
 
   <div class="sticky-bar" id="stickyBar">
-    <div class="info">12/12 · 9h às 16h · Lumiar<strong>1º lote 3x R$99</strong></div>
+    <div class="info">12/12 · 9h às 16h · Lumiar<strong>1º lote 3x R$119</strong></div>
     <a href="#ingressos" class="btn">Garantir vaga</a>
   </div>
 
