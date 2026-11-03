@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chama Que Vem | Presencial 12.12 — Lumiar, Serra Carioca | Amartt</title>
+<meta name="description" content="Um dia para intencionar seu novo ano. 12 de dezembro, das 9h às 16h, no EcoSítio Arco-íris em Lumiar — Nova Friburgo/RJ. Yoga, meditação, dinâmicas criativas e o seu Mapa de Metas 2027.">
+<script>document.documentElement.className += ' js';</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:wght@500;600;700&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     CHAMA QUE VEM — PRESENCIAL 12/12
+     Paleta: papel creme, vinho, dourado e verde sálvia.
+     NOTA: "Lavonia Classy" é fonte paga; "Alex Brush" segue como
+     substituta visual do script, como na página do Business Planner.
+     ============================================================ */
+  :root{
+    --vinho:#6E1023;
+    --vinho-deep:#4C0A18;
+    --vinho-soft:#8E2436;
+    --paper:#F7EFDC;
+    --paper-dim:#EFE2C4;
+    --paper-deep:#E6D5B0;
+    --ink:#3A1019;
+    --ink-soft:#6B4B45;
+    --rose:#D9A9A1;
+    --gold:#C8922A;
+    --gold-deep:#A2731C;
+    --verde:#7C8C63;
+    --line: rgba(58,16,25,0.16);
+    --shadow: 0 20px 50px rgba(76,10,24,0.18);
+    --font-body:'Montserrat',sans-serif;
+    --font-display:'Montserrat',sans-serif;
+    --font-title:'Playfair Display',Georgia,serif;
+    --font-script:'Lavonia Classy','Alex Brush',cursive;
+    --ease-out: cubic-bezier(.16,1,.3,1);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-weight:400;
+    font-size:17px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%; display:block;}
+  a{color:var(--vinho);}
+  a:hover{color:var(--vinho-soft);}
+  .eyebrow{
+    font-family:var(--font-display);
+    font-size:12px;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--vinho);
+    font-weight:600;
+  }
+  .script{
+    font-family:var(--font-script);
+    font-weight:400;
+    line-height:1;
+  }
+  .wrap{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+  section{position:relative;}
+
+  /* ============ REVEAL / STAGGER PRIMITIVES ============ */
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  .stagger-item{opacity:0; transform:translateY(22px); transition:opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);}
+  .stagger-item.in{opacity:1; transform:translateY(0);}
+
+  html:not(.js) .reveal,
+  html:not(.js) .stagger-item,
+  html:not(.js) .base-card,
+  html:not(.js) .depo-card,
+  html:not(.js) .ticket,
+  html:not(.js) .tl-item,
+  html:not(.js) .rose-rule{opacity:1 !important; transform:none !important;}
+
+  /* ============ HERO ============ */
+  .hero{
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:72px 24px 56px;
+    position:relative;
+    background:var(--paper);
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;
+    top:-25%; left:0; right:0; height:150%;
+    background-image:url("images/padrao-losango-verde.webp");
+    background-size:420px auto;
+    opacity:0.22;
+    will-change:transform;
+    z-index:0;
+  }
+  .hero-overlay{
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse 62% 58% at 50% 48%, rgba(247,239,220,0.97) 42%, rgba(247,239,220,0.80) 72%, rgba(247,239,220,0.55) 100%);
+    z-index:1;
+  }
+  .hero-content{position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; width:100%;}
+  .hero-main{display:grid; grid-template-columns:1fr; justify-items:center;}
+  .hero-kicker{
+    font-family:var(--font-display);
+    font-size:11.5px;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--gold-deep);
+    margin-bottom:18px;
+    animation:fadeUp 1s var(--ease-out) both;
+  }
+  .hero h1{
+    line-height:0;
+    animation:logoIn 1.1s var(--ease-out) both;
+  }
+  .hero-logo{
+    width:min(300px, 68vw);
+    filter:drop-shadow(0 10px 24px rgba(76,10,24,0.12));
+  }
+  @keyframes logoIn{from{opacity:0; transform:scale(0.94);} to{opacity:1; transform:scale(1);}}
+  .hero .tagline{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(13px, 2.4vw, 17px);
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--vinho-deep);
+    margin-top:18px;
+    animation:fadeUp 1s var(--ease-out) 0.25s both;
+  }
+  @keyframes fadeUp{from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);}}
+  .hero-art{
+    width:min(320px, 72vw);
+    margin:4px 0 2px;
+    filter:drop-shadow(0 18px 36px rgba(76,10,24,0.18));
+    animation:fadeUp 1.1s var(--ease-out) 0.4s both;
+  }
+  .date-badge{
+    position:relative;
+    background:var(--vinho);
+    color:var(--paper);
+    padding:16px 42px;
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(28px, 5.5vw, 40px);
+    letter-spacing:0.03em;
+    margin-bottom:18px;
+    clip-path: polygon(
+      0% 8%, 4% 0%, 9% 6%, 15% 1%, 21% 7%, 27% 2%, 33% 8%, 39% 1%,
+      45% 6%, 51% 0%, 57% 7%, 63% 2%, 69% 8%, 75% 1%, 81% 6%, 87% 0%,
+      93% 7%, 100% 8%, 100% 92%, 95% 100%, 89% 94%, 83% 99%, 77% 93%,
+      71% 98%, 65% 92%, 59% 99%, 53% 94%, 47% 100%, 41% 93%, 35% 98%,
+      29% 92%, 23% 99%, 17% 94%, 11% 100%, 5% 92%, 0% 92%
+    );
+    box-shadow:var(--shadow);
+    animation:stamp 0.7s cubic-bezier(.2,1.5,.4,1) 0.6s both;
+  }
+  @keyframes stamp{
+    0%{opacity:0; transform:scale(1.15);}
+    55%{opacity:1;}
+    78%{transform:scale(0.97);}
+    100%{opacity:1; transform:scale(1);}
+  }
+  .hero-meta{
+    font-family:var(--font-display);
+    font-size:13.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:12px;
+    font-weight:500;
+    animation:fadeUp 1s var(--ease-out) 0.78s both;
+  }
+  .hero-meta strong{color:var(--vinho); font-weight:700;}
+  .hero-place{
+    font-family:var(--font-display);
+    font-size:12.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:34px;
+    animation:fadeUp 1s var(--ease-out) 0.84s both;
+  }
+  .hero-place .pin{color:var(--gold-deep);}
+
+  .btn{
+    display:inline-block;
+    font-family:var(--font-display);
+    font-size:13px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    font-weight:700;
+    text-decoration:none;
+    padding:18px 42px;
+    border-radius:2px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+  }
+  .btn-primary{
+    background:var(--vinho);
+    color:var(--paper);
+    box-shadow:0 12px 30px rgba(110,16,35,0.22);
+  }
+  .btn-primary:hover{background:var(--vinho-deep); color:var(--paper); transform:translateY(-2px); box-shadow:0 16px 36px rgba(110,16,35,0.32);}
+  .hero .btn-primary{animation:fadeUp 1s var(--ease-out) 0.9s both;}
+
+  .btn-shimmer{position:relative; overflow:hidden;}
+  .btn-shimmer::after{
+    content:"";
+    position:absolute; top:0; left:-60%;
+    width:45%; height:100%;
+    background:linear-gradient(100deg, transparent, rgba(255,255,255,0.4), transparent);
+    transform:skewX(-18deg);
+    animation:sweep 3.2s ease-in-out infinite;
+  }
+  @keyframes sweep{0%{left:-60%;} 60%,100%{left:130%;}}
+
+  /* Em telas largas, a arte fica ao lado do bloco de texto:
+     assim a data e o botão continuam acima da dobra. */
+  @media (min-width:900px){
+    .hero-main{
+      grid-template-columns:1.02fr 0.98fr;
+      column-gap:48px;
+      align-items:center;
+      justify-items:start;
+      max-width:1040px;
+      text-align:left;
+      grid-template-areas:
+        "kicker art"
+        "logo   art"
+        "tag    art"
+        "badge  art"
+        "meta   art"
+        "place  art"
+        "btn    art";
+    }
+    .hero-kicker{grid-area:kicker; margin-bottom:14px;}
+    .hero h1{grid-area:logo;}
+    .hero .tagline{grid-area:tag;}
+    .hero .date-badge{grid-area:badge;}
+    .hero-meta{grid-area:meta;}
+    .hero-place{grid-area:place;}
+    .hero .btn-primary{grid-area:btn;}
+    .hero-logo{width:min(320px, 31vw);}
+    .hero-art{grid-area:art; justify-self:center; width:min(420px, 40vw); margin:0;}
+  }
+
+  .scroll-cue{
+    margin-top:36px;
+    font-family:var(--font-display);
+    font-size:11px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    animation:fadeUp 1s var(--ease-out) 1s both;
+  }
+  .scroll-cue .cue-line{
+    width:1px; height:30px;
+    background:linear-gradient(var(--gold), transparent);
+    animation:cue 1.8s ease-in-out infinite;
+  }
+  .scroll-cue .cue-text{animation:cueFade 1.8s ease-in-out infinite;}
+  @keyframes cue{
+    0%,100%{transform:scaleY(1); opacity:0.5;}
+    50%{transform:scaleY(1.3); opacity:1;}
+  }
+  @keyframes cueFade{0%,100%{opacity:0.45;} 50%{opacity:0.95;}}
+
+  /* ============ SECTION GENERIC ============ */
+  .section{padding:110px 0;}
+  .section-alt{
+    background-color:var(--paper-dim);
+    background-image:url("images/padrao-losango-verde.webp");
+    background-size:520px auto;
+    background-blend-mode:multiply;
+  }
+  .section-alt::before{
+    content:"";
+    position:absolute; inset:0;
+    background:rgba(247,239,220,0.9);
+    z-index:0;
+  }
+  .section-alt > *{position:relative; z-index:1;}
+  .section-head{max-width:680px; margin-bottom:56px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{
+    font-family:var(--font-title);
+    font-weight:600;
+    font-size:clamp(28px, 3.8vw, 40px);
+    color:var(--vinho-deep);
+    line-height:1.22;
+  }
+  .section-head p{
+    margin-top:18px;
+    color:var(--ink-soft);
+    font-size:18px;
+  }
+
+  .rose-rule{
+    height:1px; background:var(--gold);
+    transform:scaleX(0); transform-origin:left;
+    transition:transform 0.9s var(--ease-out);
+    margin-bottom:40px;
+  }
+  .rose-rule.in{transform:scaleX(1);}
+
+  /* CONVITE / PARA QUEM É */
+  .quem-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:start;
+  }
+  .quem-text p{color:var(--ink-soft); font-size:19px; margin-bottom:18px;}
+  .quem-text p strong{color:var(--ink); font-weight:600;}
+  .quem-list{list-style:none;}
+  .quem-list li{
+    display:flex; gap:16px;
+    padding:18px 0;
+    border-bottom:1px solid var(--line);
+    font-size:17px;
+    color:var(--ink);
+  }
+  .quem-list li:first-child{padding-top:0;}
+  .quem-list li::before{
+    content:"✦";
+    color:var(--gold);
+    font-size:15px;
+    line-height:1.4;
+  }
+  .badge-inedito{
+    position:relative;
+    overflow:hidden;
+    display:inline-block;
+    font-family:var(--font-display);
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--paper);
+    background:var(--verde);
+    padding:8px 16px;
+    margin-bottom:22px;
+  }
+  .badge-inedito::after{
+    content:"";
+    position:absolute; top:0; left:-60%;
+    width:50%; height:100%;
+    background:linear-gradient(100deg, transparent, rgba(255,255,255,0.45), transparent);
+    transform:skewX(-18deg);
+    animation:sweep 3.6s ease-in-out infinite;
+  }
+
+  /* QUOTE BREAK — listras vinho */
+  .quote-break{
+    position:relative;
+    min-height:46vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:var(--vinho-deep);
+    padding:72px 24px;
+    overflow:hidden;
+  }
+  .quote-bg{
+    position:absolute;
+    top:-45%; left:0; right:0; height:190%;
+    background-image:url("images/vivencia-roda.webp");
+    background-size:cover;
+    background-position:center 40%;
+    will-change:transform;
+    z-index:0;
+  }
+  .quote-overlay{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(76,10,24,0.80) 0%, rgba(76,10,24,0.88) 100%);
+    z-index:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:24px;
+  }
+  .quote-break .quote-content{position:relative; z-index:2; max-width:620px;}
+  .quote-break .quote-script{
+    font-family:var(--font-script);
+    line-height:1.15;
+    font-size:clamp(34px, 7vw, 62px);
+    color:var(--paper);
+    max-width:620px;
+    opacity:0;
+    transform:translateY(34px);
+    transition:opacity 1.1s var(--ease-out) 0.7s, transform 1.1s var(--ease-out) 0.7s;
+  }
+  .quote-break .quote-script.in{opacity:1; transform:translateY(0);}
+  .quote-break p.quote-tag{
+    margin-top:22px;
+    font-family:var(--font-display);
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.16em;
+    line-height:1.6;
+    text-transform:uppercase;
+    color:var(--rose);
+    max-width:420px;
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity 0.9s var(--ease-out) 1s, transform 0.9s var(--ease-out) 1s;
+  }
+  .quote-break p.quote-tag.in{opacity:1; transform:translateY(0);}
+
+  /* O QUE VAMOS VIVENCIAR */
+  .base-grid{
+    display:grid;
+    /* minmax(0,…) impede que um título longo alargue a coluna
+       e desalinhe a altura das fotos */
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .base-card{
+    background:var(--paper);
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    opacity:0;
+    transform:translateY(28px);
+    border-top:2px solid transparent;
+    transition:opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out), border-color 0.3s ease;
+  }
+  .base-card.in{opacity:1; transform:translateY(0);}
+  .base-card:hover{transform:translateY(-4px); border-top-color:var(--gold);}
+  .base-foto{aspect-ratio:4/3; overflow:hidden; background:var(--paper-dim);}
+  .base-foto img{width:100%; height:100%; object-fit:cover; transition:transform 0.8s var(--ease-out);}
+  .base-card:hover .base-foto img{transform:scale(1.06);}
+  .base-txt{padding:30px 28px 36px;}
+  .base-card .eyebrow{margin-bottom:16px; color:var(--gold-deep); letter-spacing:0.14em; font-size:11.5px;}
+  .base-card h3{
+    font-family:var(--font-title);
+    font-size:24px;
+    font-weight:600;
+    color:var(--vinho-deep);
+    margin-bottom:14px;
+    line-height:1.3;
+  }
+  .base-card p{color:var(--ink-soft); font-size:16.5px;}
+
+  /* O DIA — blocos numerados */
+  .plan-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .plan-item{
+    background:var(--paper);
+    padding:36px 30px;
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  }
+  .plan-item.in{opacity:1; transform:translateY(0);}
+  .plan-item .num{
+    font-family:var(--font-script);
+    font-size:38px;
+    color:var(--gold);
+    display:block;
+    margin-bottom:12px;
+    transition:color 0.4s ease;
+  }
+  .plan-item:hover .num{color:var(--vinho);}
+  .plan-item h3{
+    font-family:var(--font-display);
+    font-size:14.5px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--vinho-deep);
+    margin-bottom:10px;
+  }
+  .plan-item p{color:var(--ink-soft); font-size:16px;}
+
+  /* DEPOIMENTOS */
+  .depo-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  .depo-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:34px 30px 30px;
+    box-shadow:var(--shadow);
+    opacity:0;
+    transition:opacity 0.7s var(--ease-out), transform 0.6s var(--ease-out), box-shadow 0.4s ease;
+  }
+  .depo-card:nth-child(1){--r:-1.5deg; transform:translateX(-20px) rotate(-1.5deg);}
+  .depo-card:nth-child(2){--r:1deg;    transform:translateX(20px) rotate(1deg);}
+  .depo-card:nth-child(3){--r:-1deg;   transform:translateX(-20px) rotate(-1deg);}
+  .depo-card.in{opacity:1; transform:rotate(var(--r));}
+  .depo-card:hover{
+    transform:rotate(0deg) scale(1.03) translateY(-6px);
+    z-index:5;
+    box-shadow:0 30px 60px rgba(76,10,24,0.22);
+  }
+  .depo-card .mark{
+    font-family:var(--font-title);
+    font-size:48px;
+    line-height:0.6;
+    color:var(--gold);
+    display:block;
+    margin-bottom:14px;
+  }
+  .depo-card p{font-size:17px; color:var(--ink-soft); font-style:italic; margin-bottom:18px;}
+  .depo-card .depo-name{
+    font-family:var(--font-display);
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--vinho);
+  }
+
+  /* ============ INGRESSOS ============ */
+  .tickets{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    gap:40px;
+    max-width:560px;
+    margin:0 auto;
+    perspective:1400px;
+  }
+  .ticket{
+    position:relative;
+    background:var(--paper);
+    color:var(--ink);
+    border:1px solid var(--line);
+    box-shadow:var(--shadow);
+    display:flex;
+    flex-direction:column;
+    opacity:0;
+    transform:rotateY(8deg) translateY(20px);
+    transform-origin:center left;
+    transition:opacity 0.8s var(--ease-out), transform 0.85s var(--ease-out);
+  }
+  .ticket.in{opacity:1; transform:rotateY(0deg) translateY(0);}
+  .ticket-top{
+    padding:38px 36px 30px;
+    position:relative;
+  }
+  .ticket-top .eyebrow{color:var(--gold-deep);}
+  .ticket-top h3{
+    font-family:var(--font-title);
+    font-weight:600;
+    font-size:26px;
+    letter-spacing:0.01em;
+    margin:10px 0 6px;
+    color:var(--vinho-deep);
+  }
+  .ticket-top .ticket-sub{
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+  .ticket-price{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:46px;
+    color:var(--vinho);
+    margin-top:14px;
+    line-height:1.1;
+  }
+  .ticket-price sup{font-size:18px; top:-1.4em;}
+  .ticket-price .parcela{font-size:17px; font-weight:500; color:var(--ink-soft); display:block; letter-spacing:0.04em;}
+  .ticket-perf{
+    position:relative;
+    height:0;
+    border-top:2px dashed rgba(58,16,25,0.25);
+    margin:0 30px;
+  }
+  .ticket-perf::before, .ticket-perf::after{
+    content:"";
+    position:absolute; top:-11px;
+    width:22px; height:22px;
+    border-radius:50%;
+    background:var(--paper-dim);
+    border:1px solid var(--line);
+  }
+  .ticket-perf::before{left:-42px;}
+  .ticket-perf::after{right:-42px;}
+  .ticket-body{
+    padding:30px 36px 36px;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+  }
+  .ticket-body ul{list-style:none; margin-bottom:28px;}
+  .ticket-body li{
+    font-size:16.5px;
+    padding:10px 0;
+    display:flex;
+    gap:10px;
+    color:var(--ink-soft);
+  }
+  .ticket-body li::before{content:"✦"; color:var(--gold); flex-shrink:0; font-size:13px; line-height:1.6;}
+  .ticket-body li strong{color:var(--ink);}
+  .ticket-cta{margin-top:auto;}
+  .ticket-cta a{
+    display:block;
+    text-align:center;
+    width:100%;
+    background:var(--vinho);
+    color:var(--paper);
+    position:relative;
+    overflow:hidden;
+  }
+  .ticket-cta a:hover{background:var(--vinho-deep); color:var(--paper);}
+  .ticket-note{
+    font-family:var(--font-display);
+    font-size:12px;
+    letter-spacing:0.04em;
+    color:var(--gold-deep);
+    margin-top:14px;
+    text-align:center;
+  }
+  .ticket-premium{
+    outline:2px solid var(--gold);
+    outline-offset:-2px;
+  }
+  .ticket-premium .ticket-cta a{animation:pulseGold 2.4s ease-in-out infinite;}
+  @keyframes pulseGold{
+    0%,100%{box-shadow:0 0 0 0 rgba(200,146,42,0);}
+    50%{box-shadow:0 0 0 7px rgba(200,146,42,0.3);}
+  }
+  .ticket-flag{
+    position:absolute;
+    top:0; right:0;
+    background:var(--gold);
+    color:var(--vinho-deep);
+    font-family:var(--font-display);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    padding:8px 16px;
+    display:flex;
+    align-items:center;
+    gap:7px;
+    z-index:3;
+  }
+  .ticket-flag::before{
+    content:"";
+    width:7px; height:7px;
+    border-radius:50%;
+    background:var(--vinho);
+    animation:blinkDot 1.4s ease-in-out infinite;
+  }
+  @keyframes blinkDot{0%,100%{opacity:1;} 50%{opacity:0.2;}}
+
+  .lote-aviso{
+    max-width:560px;
+    margin:28px auto 0;
+    text-align:center;
+    font-size:15px;
+    color:var(--ink-soft);
+  }
+  .lote-aviso strong{color:var(--vinho);}
+
+  .ripple{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(247,239,220,0.5);
+    transform:scale(0);
+    animation:ripple 0.6s ease-out;
+    pointer-events:none;
+  }
+  @keyframes ripple{to{transform:scale(4); opacity:0;}}
+
+  /* KIT MÁGICO */
+  .ritual-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  /* KIT MÁGICO — foto sobreposta ao painel vinho */
+  .kit-sec{overflow:hidden;}
+  .kit-comp{
+    display:grid;
+    grid-template-columns:0.92fr 1.08fr;
+    align-items:center;
+  }
+  .kit-foto{position:relative; z-index:2;}
+  .kit-foto::before{
+    content:"";
+    position:absolute;
+    inset:20px -20px -20px 20px;
+    border:1px solid var(--gold);
+    border-radius:16px;
+    z-index:0;
+  }
+  .kit-foto img{
+    position:relative;
+    z-index:1;
+    width:100%;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    border-radius:14px;
+    border:10px solid var(--paper);
+    box-shadow:0 30px 70px rgba(76,10,24,0.28);
+    transform:rotate(-1.5deg);
+  }
+  .kit-painel{
+    position:relative;
+    z-index:1;
+    background-color:var(--vinho-deep);
+    background-image:url("images/padrao-listras-vinho.webp");
+    background-size:cover;
+    background-position:center;
+    border-radius:18px;
+    padding:74px 54px 74px 128px;
+    margin-left:-72px;
+    color:var(--paper);
+    box-shadow:0 26px 60px rgba(76,10,24,0.22);
+  }
+  .kit-painel::before{
+    content:"";
+    position:absolute; inset:0;
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(76,10,24,0.94), rgba(76,10,24,0.86));
+  }
+  .kit-painel > *{position:relative;}
+  .kit-painel .eyebrow{color:var(--gold); margin-bottom:14px;}
+  .kit-painel h2{
+    font-family:var(--font-title);
+    font-size:clamp(27px, 3.4vw, 37px);
+    font-weight:600;
+    line-height:1.22;
+    color:var(--paper);
+    margin-bottom:22px;
+  }
+  .kit-painel p{color:rgba(247,239,220,0.84); font-size:18px; margin-bottom:16px;}
+  .kit-painel p strong{color:var(--paper); font-weight:600;}
+  .kit-selo{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    margin-top:14px;
+    border:1px solid var(--gold);
+    color:var(--gold);
+    font-family:var(--font-display);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    padding:11px 20px;
+    border-radius:2px;
+  }
+
+  /* PROGRAMAÇÃO */
+  .prog-grid{display:grid; grid-template-columns:1.25fr 0.75fr; gap:56px; align-items:start;}
+  .prog-foto{
+    overflow:hidden;
+    border-radius:14px;
+    border:1px solid var(--line);
+    box-shadow:var(--shadow);
+    position:sticky;
+    top:40px;
+  }
+  .prog-foto img{width:100%; aspect-ratio:3/4; object-fit:cover;}
+  .timeline{position:relative; border-left:1px solid var(--line); margin-left:6px;}
+  .tl-progress{
+    position:absolute; left:-1px; top:0;
+    width:1px; height:100%;
+    background:var(--gold);
+    transform:scaleY(0);
+    transform-origin:top;
+  }
+  .tl-item{
+    position:relative;
+    padding:0 0 42px 34px;
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  }
+  .tl-item.in{opacity:1; transform:translateY(0);}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:"";
+    position:absolute; left:-6px; top:4px;
+    width:11px; height:11px;
+    border-radius:50%;
+    background:var(--gold);
+    border:2px solid var(--paper-dim);
+    z-index:2;
+  }
+  .tl-item.in::before{animation:pointPulse 0.9s ease-out;}
+  @keyframes pointPulse{
+    0%{box-shadow:0 0 0 0 rgba(200,146,42,0.55);}
+    100%{box-shadow:0 0 0 13px rgba(200,146,42,0);}
+  }
+  .tl-time{
+    font-family:var(--font-display);
+    font-size:12.5px;
+    letter-spacing:0.1em;
+    color:var(--vinho);
+    text-transform:uppercase;
+    margin-bottom:6px;
+    font-weight:700;
+  }
+  .tl-item h4{font-family:var(--font-title); font-size:23px; font-weight:600; color:var(--vinho-deep); margin-bottom:6px;}
+  .tl-item p{color:var(--ink-soft); font-size:16.5px; max-width:520px;}
+  .tl-note{
+    margin-top:36px;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    font-style:italic;
+    max-width:560px;
+  }
+
+  /* FACILITADORAS */
+  .facil-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+  }
+  .facil{display:flex; flex-direction:column;}
+  .facil-frame{
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    border-radius:50%;
+    aspect-ratio:1/1;
+    width:230px;
+    margin-bottom:26px;
+    border:3px solid var(--paper);
+  }
+  .facil-frame img{width:100%; height:100%; object-fit:cover;}
+  .facil .role{
+    font-family:var(--font-display);
+    font-size:11.5px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--gold-deep);
+    margin-bottom:8px;
+  }
+  .facil h3{
+    font-family:var(--font-title);
+    font-size:32px;
+    font-weight:600;
+    color:var(--vinho-deep);
+    margin-bottom:16px;
+  }
+  .facil p{color:var(--ink-soft); font-size:17px; margin-bottom:14px;}
+  .facil p strong{color:var(--ink); font-weight:600;}
+  .about-signature{
+    font-family:var(--font-script);
+    font-size:34px;
+    color:var(--vinho);
+    margin-top:8px;
+    display:inline-block;
+  }
+  html.js .about-signature{
+    clip-path:inset(0 100% 0 0);
+    transition:clip-path 1.5s var(--ease-out);
+  }
+  html.js .about-signature.in{clip-path:inset(0 0 0 0);}
+
+  /* FAQ */
+  .faq{max-width:760px;}
+  .faq-item{
+    position:relative;
+    border-bottom:1px solid var(--line);
+  }
+  .faq-fill{
+    position:absolute; left:0; bottom:-1px;
+    height:1px; width:100%;
+    background:var(--gold);
+    transform:scaleX(0); transform-origin:left;
+    transition:transform 0.5s var(--ease-out);
+  }
+  .faq-item.open .faq-fill{transform:scaleX(1);}
+  .faq-q{
+    width:100%;
+    background:none;
+    border:none;
+    cursor:pointer;
+    text-align:left;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    padding:24px 0;
+    font-family:var(--font-body);
+    font-size:18px;
+    font-weight:600;
+    color:var(--vinho-deep);
+    line-height:1.4;
+  }
+  .faq-icon{
+    position:relative;
+    width:18px; height:18px;
+    flex-shrink:0;
+    transition:transform 0.3s var(--ease-out);
+  }
+  .faq-icon::before, .faq-icon::after{
+    content:"";
+    position:absolute;
+    background:var(--gold);
+  }
+  .faq-icon::before{left:0; right:0; top:50%; height:2px; margin-top:-1px;}
+  .faq-icon::after{top:0; bottom:0; left:50%; width:2px; margin-left:-1px;}
+  .faq-item.open .faq-icon{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.45s var(--ease-out);
+  }
+  .faq-a-inner{padding:0 0 24px;}
+  .faq-a-inner p{
+    color:var(--ink-soft);
+    font-size:16.5px;
+    max-width:640px;
+  }
+  .faq-a-inner p + p{margin-top:12px;}
+
+  /* CTA FINAL */
+  .final-cta{
+    text-align:center;
+    padding:130px 24px;
+    background:var(--vinho-deep);
+    color:var(--paper);
+    position:relative;
+    overflow:hidden;
+  }
+  .final-cta::before{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse 80% 60% at 50% 100%, rgba(200,146,42,0.3), transparent 62%);
+    animation:breathe 4s ease-in-out infinite;
+    z-index:0;
+  }
+  .final-cta > *{position:relative; z-index:1;}
+  @keyframes breathe{
+    0%,100%{transform:scale(1); opacity:0.75;}
+    50%{transform:scale(1.12); opacity:1;}
+  }
+  .final-cta .script{font-size:clamp(32px,5vw,50px); color:var(--rose); margin-bottom:16px;}
+  .final-cta h2{
+    font-family:var(--font-title);
+    font-weight:600;
+    font-size:clamp(23px,3vw,32px);
+    color:var(--paper);
+    max-width:660px;
+    margin:0 auto 36px;
+    line-height:1.35;
+  }
+  .final-cta .btn-primary{
+    background:var(--gold);
+    color:var(--vinho-deep);
+    box-shadow:0 12px 30px rgba(200,146,42,0.3);
+  }
+  .final-cta .btn-primary:hover{background:var(--paper); color:var(--vinho-deep);}
+
+  /* REALIZAÇÃO / APOIO — faixa escura: os logos são em branco/creme */
+  .creditos{
+    background:var(--vinho-deep);
+    padding:70px 24px 56px;
+    text-align:center;
+    border-top:1px solid rgba(200,146,42,0.22);
+  }
+  .creditos-bloco + .creditos-bloco{margin-top:46px;}
+  .creditos .label{
+    font-family:var(--font-display);
+    font-size:11px;
+    letter-spacing:0.26em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--gold);
+    margin-bottom:24px;
+  }
+  .creditos .marcas{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:30px 56px;
+  }
+  .creditos .lg{
+    width:auto;
+    opacity:0.95;
+    transition:opacity 0.3s ease;
+  }
+  .creditos .lg:hover{opacity:1;}
+  /* alturas equilibradas opticamente — cada logo tem proporção diferente */
+  .lg-soma{height:42px;}
+  .lg-amartt{height:52px;}
+  .lg-eco{height:66px;}
+  .lg-imana{height:46px;}
+  @media (max-width:520px){
+    .creditos .marcas{gap:26px 36px;}
+    .lg-soma{height:34px;}
+    .lg-amartt{height:42px;}
+    .lg-eco{height:54px;}
+    .lg-imana{height:38px;}
+  }
+
+  footer{
+    /* folga embaixo pra barra fixa não cobrir a assinatura */
+    padding:34px 24px 104px;
+    text-align:center;
+    font-family:var(--font-display);
+    font-size:11px;
+    letter-spacing:0.08em;
+    color:rgba(217,169,161,0.75);
+    background:var(--vinho-deep);
+  }
+
+  /* ===== WHATSAPP ===== */
+  /* botão flutuante — fica acima da barra fixa de inscrição */
+  .zap-float{
+    position:fixed;
+    right:20px;
+    bottom:94px;
+    z-index:60;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--vinho);
+    color:var(--paper);
+    text-decoration:none;
+    padding:13px 20px 13px 16px;
+    border-radius:999px;
+    box-shadow:0 14px 34px rgba(76,10,24,0.34);
+    font-family:var(--font-display);
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    transition:transform 0.25s var(--ease-out), background 0.25s ease;
+  }
+  .zap-float:hover{background:var(--vinho-deep); color:var(--paper); transform:translateY(-2px);}
+  .zap-float svg{width:21px; height:21px; flex-shrink:0; fill:currentColor;}
+  .zap-float .zap-label{white-space:nowrap;}
+  @media (max-width:620px){
+    .zap-float{padding:14px; right:16px; bottom:88px;}
+    .zap-float .zap-label{display:none;}
+    .zap-float svg{width:24px; height:24px;}
+  }
+
+  /* chamada no fim do FAQ */
+  .zap-bloco{
+    margin-top:52px;
+    padding:38px 34px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:14px;
+    text-align:center;
+    max-width:760px;
+  }
+  .zap-bloco h3{
+    font-family:var(--font-title);
+    font-size:clamp(22px,2.8vw,28px);
+    font-weight:600;
+    color:var(--vinho-deep);
+    margin-bottom:10px;
+  }
+  .zap-bloco p{color:var(--ink-soft); font-size:16.5px; margin-bottom:24px;}
+  .btn-zap{
+    display:inline-flex;
+    align-items:center;
+    gap:11px;
+    background:var(--verde);
+    color:var(--paper);
+  }
+  .btn-zap:hover{background:#687857; color:var(--paper); transform:translateY(-2px);}
+  .btn-zap svg{width:19px; height:19px; fill:currentColor;}
+
+  /* STICKY MOBILE BAR */
+  .sticky-bar{
+    position:fixed;
+    left:0; right:0; bottom:0;
+    background:var(--vinho-deep);
+    border-top:1px solid rgba(247,239,220,0.14);
+    padding:14px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    opacity:0;
+    transform:translateY(120%);
+    transition:transform 0.55s var(--ease-out), opacity 0.45s ease;
+    z-index:50;
+  }
+  .sticky-bar.show{transform:translateY(0); opacity:1;}
+  .sticky-bar .info{font-family:var(--font-display); font-size:12px; color:var(--rose);}
+  .sticky-bar .info strong{color:var(--paper); display:block; font-size:16px; font-family:var(--font-body);}
+  .sticky-bar .btn{
+    padding:12px 24px;
+    font-size:11px;
+    white-space:nowrap;
+    background:var(--gold);
+    color:var(--vinho-deep);
+    animation:stickyPulse 2.4s ease-in-out infinite;
+  }
+  .sticky-bar .btn:hover{background:var(--paper); color:var(--vinho-deep);}
+  @keyframes stickyPulse{
+    0%,100%{box-shadow:0 12px 30px rgba(200,146,42,0.25);}
+    50%{box-shadow:0 12px 42px rgba(200,146,42,0.55);}
+  }
+
+  @media (max-width:860px){
+    .quem-grid, .tickets, .facil-grid, .kit-comp, .prog-grid{grid-template-columns:1fr;}
+    .prog-foto{position:static; margin-top:40px;}
+    .kit-foto{width:86%; margin:0 auto;}
+    .kit-foto img{transform:none;}
+    .kit-foto::before{inset:14px -14px -14px 14px;}
+    .kit-painel{margin:-34px 0 0; padding:66px 30px 48px;}
+    .base-grid{grid-template-columns:1fr;}
+    .plan-grid{grid-template-columns:repeat(2,1fr);}
+    .depo-grid{grid-template-columns:1fr;}
+    .section{padding:80px 0;}
+    .ticket-perf::before{left:-11px;}
+    .ticket-perf::after{right:-11px;}
+    .facil-frame{width:180px;}
+  }
+
+  @media (min-width:1180px){
+    .base-grid{grid-template-columns:repeat(4, minmax(0, 1fr));}
+  }
+
+  /* ============ REDUCED MOTION ============ */
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation:none !important;
+      transition:none !important;
+    }
+    html{scroll-behavior:auto;}
+    .reveal, .stagger-item, .base-card, .plan-item, .depo-card, .ticket, .tl-item, .rose-rule,
+    .quote-break .quote-script, .quote-break p.quote-tag,
+    .hero h1, .hero .tagline, .hero-art, .date-badge, .hero-meta, .hero-place, .hero .btn-primary, .scroll-cue{
+      opacity:1 !important;
+      transform:none !important;
+      clip-path:none !important;
+    }
+    .about-signature{clip-path:none !important;}
+    .tl-progress{transform:scaleY(1) !important;}
+    .faq-a{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" data-parallax="0.12"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-main">
+        <p class="hero-kicker">Serra carioca · Yoga e criatividade · Metas 2027</p>
+        <h1><img class="hero-logo" src="images/logo-chama-que-vem.webp" alt="Chama Que Vem — Amartt"></h1>
+        <p class="tagline">Um dia para intencionar seu novo ano!</p>
+
+        <img class="hero-art" src="images/hero-livia-julia-sol.webp" alt="Lívia Amartt e Julia Sancho, facilitadoras do Chama Que Vem">
+
+        <div class="date-badge">12 / 12</div>
+        <div class="hero-meta">Sábado · <strong>9h às 16h</strong></div>
+        <div class="hero-place"><span class="pin">◆</span> EcoSítio Arco-íris · Lumiar — Nova Friburgo/RJ</div>
+
+        <a href="#ingressos" class="btn btn-primary">Quero garantir minha vaga</a>
+      </div>
+
+      <div class="scroll-cue"><span class="cue-line"></span><span class="cue-text">Role para conhecer o encontro</span></div>
+    </div>
+  </section>
+
+  <!-- CONVITE / PARA QUEM É -->
+  <section class="section">
+    <div class="wrap">
+      <div class="quem-grid">
+        <div class="quem-text" data-stagger="90">
+          <span class="badge-inedito stagger-item">Edição presencial · 1 dia inteiro</span>
+          <p class="eyebrow stagger-item" style="margin-bottom:16px;">O convite</p>
+          <p class="stagger-item"><strong>Uma pausa revitalizante para iniciar um novo ano alinhada aos seus desejos e propósito.</strong></p>
+          <p class="stagger-item">Yoga, meditação, dinâmicas em grupo, atividades criativas mão na massa e muita cura para abrirmos 2027 com chave de ouro!</p>
+          <p class="stagger-item">Em meio à natureza da serra carioca, no <strong>EcoSítio Arco-íris</strong>, em Lumiar — Nova Friburgo/RJ. Um dia inteiro longe da correria, entre mulheres que sonham e realizam.</p>
+          <p class="stagger-item">O Chama Que Vem existe desde 2017 e já teve <strong>mais de 30 edições</strong> entre online e presencial. Dessa vez, subimos a serra carioca para <strong>um dia imersivo na natureza</strong>.</p>
+        </div>
+        <ul class="quem-list" data-stagger="80">
+          <li class="stagger-item">Você chega no fim do ano exausta, sem tempo de olhar pra dentro</li>
+          <li class="stagger-item">Sente que o ano passou e você não parou pra celebrar o que viveu</li>
+          <li class="stagger-item">Quer começar 2027 com direção — e não no piloto automático</li>
+          <li class="stagger-item">Sente falta de estar entre mulheres, em roda, com tempo de verdade</li>
+          <li class="stagger-item">Quer intencionar carreira, família e amor no mesmo lugar</li>
+          <li class="stagger-item">Precisa de um dia só seu, na natureza, pra respirar e sonhar</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE BREAK -->
+  <section class="quote-break" data-om-label="motivacional">
+    <div class="quote-bg" data-parallax="0.3"></div>
+    <div class="quote-overlay">
+      <div class="script quote-script">O seu 2027 começa aqui</div>
+      <p class="quote-tag">No dia 12 de dezembro, em Lumiar</p>
+    </div>
+    <div class="quote-content"></div>
+  </section>
+
+  <!-- O QUE VAMOS VIVENCIAR -->
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">O que vamos vivenciar</p>
+        <h2>Quatro momentos para fechar um ciclo e abrir o próximo</h2>
+        <p>Um dia construído em camadas: corpo, memória, criação e intenção. Tudo com o jeito Amartt e Ju Sancho de conduzir — criativo, com conexão, acolhimento e muita mão na massa.</p>
+      </div>
+      <div class="rose-rule"></div>
+      <div class="base-grid" data-stagger="100">
+        <div class="base-card">
+          <div class="base-foto"><img src="images/vivencia-pratica.webp" alt="Mulheres em prática de yoga, com os braços para o alto"></div>
+          <div class="base-txt">
+            <p class="eyebrow">Yoga &amp; meditação</p>
+            <h3>Chegar ao corpo antes de chegar ao papel</h3>
+            <p>Nossa coprodutora, Julia Sancho, abre o dia com uma prática de yoga e meditação para respirarmos, desacelerarmos e aterrissarmos de verdade na serra.</p>
+          </div>
+        </div>
+        <div class="base-card">
+          <div class="base-foto"><img src="images/vivencia-escrevendo.webp" alt="Participante escrevendo durante a vivência"></div>
+          <div class="base-txt">
+            <p class="eyebrow">Autoconhecimento</p>
+            <h3>Reconexão com a sua essência manifestadora</h3>
+            <p>Momento de olhar para o ano que passou, ressignificar espaços internos e fortalecer suas potências — o que você quer levar pra 2027 e o que fica pra trás.</p>
+          </div>
+        </div>
+        <div class="base-card">
+          <div class="base-foto"><img src="images/vivencia-abraco.webp" alt="Roda de mulheres abraçadas"></div>
+          <div class="base-txt">
+            <p class="eyebrow">Acolhimento</p>
+            <h3>Escuta, partilha e mulheres que se somam</h3>
+            <p>Uma roda de verdade: espaço pra falar, pra ouvir e pra ser ouvida. É onde a gente percebe que não está sozinha — e onde nascem conexões, parcerias e amizades que seguem depois do dia.</p>
+          </div>
+        </div>
+        <div class="base-card">
+          <div class="base-foto"><img src="images/vivencia-grupo.webp" alt="Grupo de mulheres criando seus mapas de metas"></div>
+          <div class="base-txt">
+            <p class="eyebrow">Mapa de Metas 2027</p>
+            <h3>A dinâmica criativa mão na massa</h3>
+            <p>Carreira, família, amor: você sai com o seu Mapa de Sonhos &amp; Metas construído no papel, com as próprias mãos — e com o Kit Mágico pra continuar em casa.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KIT MÁGICO -->
+  <section class="section kit-sec">
+    <div class="wrap">
+      <div class="kit-comp">
+        <div class="kit-foto reveal">
+          <img src="images/kit-magico.webp" alt="Kit Mágico Chama Que Vem: caderno, pôster, stickers e papelaria exclusiva">
+        </div>
+        <div class="kit-painel" data-stagger="90">
+          <p class="eyebrow stagger-item">Kit Mágico</p>
+          <h2 class="stagger-item">Uma papelaria exclusiva, criada só para esse dia</h2>
+          <p class="stagger-item">Cada participante recebe o <strong>Kit Mágico</strong>: a papelaria autoral do Chama Que Vem, com todas as páginas das dinâmicas que faremos juntas.</p>
+          <p class="stagger-item">Planejar, aqui, não é preencher planilha fria. É um ritual — papel, caneta, cor e tempo pra sentir onde a sua vida quer ir. Por isso cada peça é pensada pra ser vivida com presença, não preenchida no automático.</p>
+          <p class="stagger-item">Você leva o kit pra casa. Ele continua trabalhando com você o ano inteiro.</p>
+          <span class="kit-selo stagger-item">✦ Incluso no seu ingresso</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Quem já viveu o Chama Que Vem confirma</p>
+        <h2>Não é só sobre planejar. É sobre o que muda depois.</h2>
+      </div>
+      <div class="depo-grid">
+        <div class="depo-card">
+          <span class="mark">&ldquo;</span>
+          <p>É sempre incrível, parei para ver meu Mapa de Metas e percebi que realizei muitaaa coisa linda que coloquei nele, SURREAL!</p>
+          <span class="depo-name">Larissa Luz</span>
+        </div>
+        <div class="depo-card">
+          <span class="mark">&ldquo;</span>
+          <p>Eu amei participar, foi uma das primeiras vezes que fiquei longe de casa. Foi lindo, me senti super acolhida. Foi importante me dar aquele espaço para sonhar!</p>
+          <span class="depo-name">Francisca</span>
+        </div>
+        <div class="depo-card">
+          <span class="mark">&ldquo;</span>
+          <p>Você não sabe o quanto esse momento é importante pra mim, meu último Mapa de Metas foi realizado por completo.</p>
+          <span class="depo-name">Tainá</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INGRESSOS -->
+  <section class="section" id="ingressos">
+    <div class="wrap">
+      <div class="section-head reveal" style="margin-left:auto; margin-right:auto; text-align:center;">
+        <p class="eyebrow">Ingressos</p>
+        <h2>Garanta sua vaga no 1º lote</h2>
+        <p>São vagas limitadas — o espaço comporta um grupo pequeno, e é assim que esse dia funciona.</p>
+      </div>
+      <div class="tickets">
+        <div class="ticket ticket-premium">
+          <div class="ticket-flag">1º lote</div>
+          <div class="ticket-top">
+            <p class="eyebrow">Ingresso</p>
+            <h3>Chama Que Vem presencial</h3>
+            <p class="ticket-sub">12 de dezembro · 9h às 16h · Lumiar — NF/RJ</p>
+            <div class="ticket-price">3x R$99<span class="parcela">sem juros no cartão</span></div>
+          </div>
+          <div class="ticket-perf"></div>
+          <div class="ticket-body">
+            <ul>
+              <li>Dia completo de atividades, das <strong>9h às 16h</strong></li>
+              <li>Prática de <strong>yoga e meditação</strong> com Julia Sancho</li>
+              <li>Dinâmicas de autoconhecimento e roda de acolhimento</li>
+              <li>Construção do seu <strong>Mapa de Metas 2027</strong></li>
+              <li><strong>Kit Mágico</strong> — papelaria exclusiva Chama Que Vem</li>
+              <li><strong>Almoço e lanche da tarde</strong> inclusos</li>
+            </ul>
+            <div class="ticket-cta">
+              <a href="#" class="btn btn-shimmer">Quero minha vaga</a>
+              <p class="ticket-note">Valor do 1º lote · até 30/11</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="lote-aviso"><strong>2º lote</strong> a partir de 01/12, nos 12 dias finais antes do encontro. Quem quiser dormir na serra, temos <strong>hospedagem no próprio EcoSítio</strong> em quartos duplos, triplos e quádruplos — veja nas perguntas frequentes.</p>
+    </div>
+  </section>
+
+  <!-- PROGRAMAÇÃO -->
+  <section class="section section-alt" data-om-label="programação">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Programação</p>
+        <h2>Como será o nosso dia na serra</h2>
+        <p>Das 9h às 16h, com almoço e lanche da tarde inclusos. Um dia desenhado para começar no corpo e terminar no papel.</p>
+      </div>
+      <div class="prog-grid">
+      <div class="timeline">
+        <div class="tl-progress"></div>
+        <div class="tl-item">
+          <p class="tl-time">9h00</p>
+          <h4>Chegada e boas-vindas</h4>
+          <p>Acolhimento no EcoSítio Arco-íris, café e a abertura da nossa roda.</p>
+        </div>
+        <div class="tl-item">
+          <p class="tl-time">9h30</p>
+          <h4>Yoga e meditação</h4>
+          <p>Prática inicial conduzida por Julia Sancho, para respirar, desacelerar e chegar de verdade.</p>
+        </div>
+        <div class="tl-item">
+          <p class="tl-time">11h00</p>
+          <h4>Autoconhecimento</h4>
+          <p>Fechamento do ciclo: o que foi vivido em 2026, o que fica e o que vai embora.</p>
+        </div>
+        <div class="tl-item">
+          <p class="tl-time">13h00</p>
+          <h4>Almoço no sítio</h4>
+          <p>Incluso no seu ingresso. Um respiro real no meio do dia, com tempo de conversa e de natureza.</p>
+        </div>
+        <div class="tl-item">
+          <p class="tl-time">14h00</p>
+          <h4>Mapa de Metas 2027</h4>
+          <p>A dinâmica criativa mão na massa: carreira, família e amor no papel, com o Kit Mágico.</p>
+        </div>
+        <div class="tl-item">
+          <p class="tl-time">15h30</p>
+          <h4>Roda de acolhimento e encerramento</h4>
+          <p>Partilhas, lanche da tarde e o ritual de fechamento do nosso dia.</p>
+        </div>
+      </div>
+        <div class="prog-foto reveal">
+          <img src="images/kit-mesa.webp" alt="Planner, pôster e canetas do Chama Que Vem sobre a mesa">
+        </div>
+      </div>
+      <p class="tl-note">O encontro pode se estender um pouco além das 16h — reserve o dia inteiro e venha sem pressa.</p>
+    </div>
+  </section>
+
+  <!-- FACILITADORAS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Facilitadoras</p>
+        <h2>Quem conduz esse dia com você</h2>
+      </div>
+      <div class="facil-grid">
+        <div class="facil reveal">
+          <div class="facil-frame"><img src="images/livia-retrato.webp" alt="Lívia Amartt"></div>
+          <p class="role">Mentora de negócios · Estrategista de marca</p>
+          <h3>Lívia Amartt</h3>
+          <p>Sou mentora de negócios e estrategista de marca, atuo no digital há 10 anos e sou fundadora do <strong>Chama Que Vem, que existe desde 2017</strong> — e também estou à frente da Imana.</p>
+          <p>Me realizo contribuindo para o desabrochar de pessoas e marcas: o reencontro do chamado do coração com a nossa força de realização.</p>
+          <p>Hoje moro em Lumiar — NF com meu marido e minha filha, um sonho manifestado. Amo uma boa trilha, um dia na cachu e também um sofá relax.</p>
+          <span class="about-signature">Lívia Amartt</span>
+        </div>
+        <div class="facil reveal">
+          <div class="facil-frame"><img src="images/julia-retrato.webp" alt="Julia Sancho"></div>
+          <p class="role">Professora de yoga · Fundadora SOMA Yoga Shala</p>
+          <h3>Julia Sancho</h3>
+          <p>Apaixonada por yoga e fundadora do <strong>SOMA Yoga Shala</strong>, seu espaço de práticas em Nova Friburgo, ativo desde 2020. Estudiosa da cultura e da <strong>astrologia védica</strong>.</p>
+          <p>Libriana, com alma solar, mas que vê beleza nos dias frios e nublados. Ama um bom café, viajar, conhecer culturas e pessoas. Se emociona fácil — com as belezas e também com as dificuldades da vida.</p>
+          <p>Movida a ideias, sonhos e afetos, com os pés bem firmes no chão. É ela quem conduz a nossa prática de abertura.</p>
+          <span class="about-signature">Julia Sancho</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Perguntas frequentes</p>
+        <h2>Antes de decidir</h2>
+      </div>
+      <div class="faq">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Posso dormir no local? Como funciona a hospedagem?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">
+            <p>Sim. O EcoSítio Arco-íris tem acomodações e você pode chegar na véspera ou ficar depois do encontro, em <strong>quartos duplos, triplos ou quádruplos</strong>. A hospedagem é opcional e não está inclusa no ingresso.</p>
+            <p>Chame o time Amartt no WhatsApp para consultar valores e disponibilidade, e para combinarmos com quem você divide o quarto.</p>
+          </div></div>
+          <span class="faq-fill"></span>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Onde fica Lumiar e como eu chego?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">
+            <p>Lumiar é um distrito de Nova Friburgo, na serra carioca. O mais indicado é ir de carro.</p>
+            <p>Se você não tiver como vir, sinalize para o time Amartt que te ajudamos a encontrar uma carona com outras participantes.</p>
+          </div></div>
+          <span class="faq-fill"></span>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">A alimentação está inclusa?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">
+            <p>Sim. <strong>Almoço e lanche da tarde estão inclusos</strong> no seu ingresso, servidos no próprio sítio. O almoço é às 13h e o lanche no fim da tarde, antes do encerramento.</p>
+            <p>Se você tem alguma restrição alimentar, avise o time Amartt no WhatsApp ao se inscrever.</p>
+          </div></div>
+          <span class="faq-fill"></span>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Preciso levar algum material?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">
+            <p>Cada participante recebe o <strong>Kit Mágico</strong> com toda a papelaria das dinâmicas. Recomendamos trazer canetas coloridas e um caderno para anotar insights.</p>
+            <p>Venha com roupa confortável para a prática de yoga e para o dia na serra.</p>
+          </div></div>
+          <span class="faq-fill"></span>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">O encontro é só para mulheres?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">
+            <p>Sim. O Chama Que Vem é um encontro destinado a mulheres — as rodas de escuta e partilha são construídas a partir disso.</p>
+          </div></div>
+          <span class="faq-fill"></span>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Tomo remédio controlado, posso participar?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">
+            <p>Vai depender do seu quadro clínico e da liberação do seu médico. Como teremos dinâmicas de autoconhecimento, recomendamos vir somente se estiver se sentindo equilibrada internamente para acessar espaços internos sensíveis.</p>
+          </div></div>
+          <span class="faq-fill"></span>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Como funciona a política de reembolso?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">
+            <p>Avisando com até 1 mês de antecedência, devolvemos 100% do valor pago. Em caso de cancelamento com até 15 dias de antecedência, devolvemos 50%. A partir de 10 dias antes do encontro não reembolsamos mais, mas podemos avaliar seu caso e deixar um crédito em serviços e produtos da Amartt.</p>
+            <p>Lembrando que, por lei, você tem até 7 dias após a compra online para desistir com reembolso integral.</p>
+          </div></div>
+          <span class="faq-fill"></span>
+        </div>
+      </div>
+
+      <!-- TODO: trocar o href "#" pelo link do WhatsApp -->
+      <div class="zap-bloco reveal">
+        <h3>Ficou com alguma dúvida?</h3>
+        <p>Fale com o time Amartt no WhatsApp — a gente responde pessoalmente, sem robô.</p>
+        <a href="#" class="btn btn-zap">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.8h-.01a9.8 9.8 0 0 1-4.99-1.37l-.36-.21-3.71.97.99-3.62-.23-.37a9.78 9.78 0 0 1-1.5-5.22c0-5.4 4.4-9.8 9.81-9.8 2.62 0 5.08 1.02 6.93 2.88a9.74 9.74 0 0 1 2.87 6.93c0 5.41-4.4 9.81-9.8 9.81M20.52 3.45A11.76 11.76 0 0 0 12.05 0C5.5 0 .17 5.33.16 11.88c0 2.1.55 4.14 1.6 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.24-6.16-3.48-8.4"/></svg>
+          Fale conosco no WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTÃO FLUTUANTE DE WHATSAPP
+       TODO: trocar o href "#" pelo link https://wa.me/55DDDNUMERO?text=... -->
+  <a href="#" class="zap-float" aria-label="Fale conosco no WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.8h-.01a9.8 9.8 0 0 1-4.99-1.37l-.36-.21-3.71.97.99-3.62-.23-.37a9.78 9.78 0 0 1-1.5-5.22c0-5.4 4.4-9.8 9.81-9.8 2.62 0 5.08 1.02 6.93 2.88a9.74 9.74 0 0 1 2.87 6.93c0 5.41-4.4 9.81-9.8 9.81M20.52 3.45A11.76 11.76 0 0 0 12.05 0C5.5 0 .17 5.33.16 11.88c0 2.1.55 4.14 1.6 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.24-6.16-3.48-8.4"/></svg>
+    <span class="zap-label">Tire suas dúvidas</span>
+  </a>
+
+  <!-- CTA FINAL -->
+  <section class="final-cta reveal">
+    <div class="script">Sábado, 12 de dezembro | 9h</div>
+    <h2>Um dia inteiro na serra para fechar 2026 em paz e abrir 2027 com chave de ouro.</h2>
+    <a href="#ingressos" class="btn btn-primary btn-shimmer">Quero garantir minha vaga</a>
+  </section>
+
+  <!-- REALIZAÇÃO / APOIO -->
+  <section class="creditos">
+    <div class="creditos-bloco realizacao">
+      <p class="label">Realização</p>
+      <div class="marcas">
+        <img class="lg lg-soma" src="images/logo-soma.webp" alt="SOMA Yoga Shala">
+        <img class="lg lg-amartt" src="images/logo-amartt.webp" alt="Amartt">
+      </div>
+    </div>
+    <div class="creditos-bloco apoio">
+      <p class="label">Apoio</p>
+      <div class="marcas">
+        <img class="lg lg-eco" src="images/logo-ecositio.webp" alt="EcoSítio Arco-íris — Km 19,5 Mury–Lumiar, Nova Friburgo">
+        <img class="lg lg-imana" src="images/logo-imana.webp" alt="Imana Branding">
+      </div>
+    </div>
+  </section>
+
+  <footer>AMARTT · CHAMA QUE VEM PRESENCIAL · 12/12 · LUMIAR — NOVA FRIBURGO/RJ</footer>
+
+  <div class="sticky-bar" id="stickyBar">
+    <div class="info">12/12 · 9h às 16h · Lumiar<strong>1º lote 3x R$99</strong></div>
+    <a href="#ingressos" class="btn">Garantir vaga</a>
+  </div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Observe elements once, then run callback
+  function onEnter(nodes, cb, threshold){
+    nodes = Array.prototype.slice.call(nodes);
+    if(!('IntersectionObserver' in window) || reduce){ nodes.forEach(cb); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ cb(e.target); io.unobserve(e.target); }
+      });
+    }, {threshold: threshold || 0.15});
+    nodes.forEach(function(el){ io.observe(el); });
+  }
+
+  // --- Generic block reveals ---
+  onEnter(document.querySelectorAll('.reveal'), function(el){
+    el.style.willChange = 'opacity, transform';
+    el.classList.add('in');
+    el.addEventListener('transitionend', function h(){ el.style.willChange = 'auto'; el.removeEventListener('transitionend', h); });
+  });
+
+  // --- Generic staggered containers ---
+  document.querySelectorAll('[data-stagger]').forEach(function(container){
+    var step = parseInt(container.dataset.stagger, 10) || 80;
+    var items = container.querySelectorAll('.stagger-item');
+    onEnter([container], function(){
+      items.forEach(function(it, i){
+        it.style.transitionDelay = (i * step) + 'ms';
+        it.classList.add('in');
+      });
+    });
+  });
+
+  // --- Decorative rule ---
+  onEnter(document.querySelectorAll('.rose-rule'), function(el){ el.classList.add('in'); });
+
+  // --- Quote break: sequenced script + tag ---
+  onEnter(document.querySelectorAll('.quote-break'), function(el){
+    var s = el.querySelector('.quote-script');
+    var t = el.querySelector('.quote-tag');
+    if(s){ s.classList.add('in'); }
+    if(t){ t.classList.add('in'); }
+  }, 0.25);
+
+  // --- Signature handwriting sweep ---
+  onEnter(document.querySelectorAll('.about-signature'), function(el){ el.classList.add('in'); }, 0.4);
+
+  // --- Base cards stagger ---
+  var baseGrid = document.querySelector('.base-grid');
+  if(baseGrid){
+    onEnter([baseGrid], function(){
+      baseGrid.querySelectorAll('.base-card').forEach(function(c, i){
+        setTimeout(function(){ c.classList.add('in'); }, i * 100);
+      });
+    });
+  }
+
+  // --- Plan grid: stagger + number count-up ---
+  function countUp(el, target){
+    var dur = 1000, start = null;
+    function tick(now){
+      if(start === null) start = now;
+      var p = Math.min(1, (now - start) / dur);
+      el.textContent = Math.round(p * target);
+      if(p < 1){ requestAnimationFrame(tick); } else { el.textContent = target; }
+    }
+    requestAnimationFrame(tick);
+  }
+  var planGrid = document.querySelector('.plan-grid');
+  if(planGrid){
+    onEnter([planGrid], function(){
+      planGrid.querySelectorAll('.plan-item').forEach(function(item, i){
+        setTimeout(function(){
+          item.classList.add('in');
+          var num = item.querySelector('.num');
+          if(num){
+            var target = parseInt(num.dataset.num || num.textContent, 10);
+            if(!reduce && !isNaN(target)){ num.textContent = '0'; countUp(num, target); }
+            else if(!isNaN(target)){ num.textContent = target; }
+          }
+        }, i * 80);
+      });
+    });
+  }
+
+  // --- Depoimentos stagger ---
+  var depoGrid = document.querySelector('.depo-grid');
+  if(depoGrid){
+    onEnter([depoGrid], function(){
+      depoGrid.querySelectorAll('.depo-card').forEach(function(c, i){
+        setTimeout(function(){ c.classList.add('in'); }, i * 100);
+      });
+    });
+  }
+
+  // --- Tickets flip stagger ---
+  var ticketsWrap = document.querySelector('.tickets');
+  if(ticketsWrap){
+    onEnter([ticketsWrap], function(){
+      ticketsWrap.querySelectorAll('.ticket').forEach(function(t, i){
+        setTimeout(function(){ t.classList.add('in'); }, i * 150);
+      });
+    }, 0.2);
+  }
+
+  // --- Timeline items (appear one by one, point pulses once) ---
+  onEnter(document.querySelectorAll('.tl-item'), function(el){ el.classList.add('in'); }, 0.3);
+
+  // --- Ripple effect on ticket buttons ---
+  document.querySelectorAll('.ticket-cta a').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      var rect = this.getBoundingClientRect();
+      var size = Math.max(rect.width, rect.height);
+      var r = document.createElement('span');
+      r.className = 'ripple';
+      r.style.width = r.style.height = size + 'px';
+      r.style.left = (e.clientX - rect.left - size / 2) + 'px';
+      r.style.top = (e.clientY - rect.top - size / 2) + 'px';
+      this.appendChild(r);
+      setTimeout(function(){ r.remove(); }, 650);
+    });
+  });
+
+  // --- Parallax (rAF) + timeline progress line ---
+  var pEls = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+  var timeline = document.querySelector('.timeline');
+  var tlProgress = document.querySelector('.tl-progress');
+  var ticking = false;
+
+  function update(){
+    var vh = window.innerHeight;
+    if(!reduce){
+      pEls.forEach(function(el){
+        var speed = parseFloat(el.dataset.parallax);
+        var scale = parseFloat(el.dataset.scale) || 1;
+        var c = el.parentElement.getBoundingClientRect();
+        if(c.bottom < -120 || c.top > vh + 120){ return; }
+        var shift = (c.top + c.height / 2 - vh / 2);
+        var y = -shift * speed;
+        el.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0)' + (scale !== 1 ? (' scale(' + scale + ')') : '');
+      });
+    }
+    if(timeline && tlProgress){
+      var r = timeline.getBoundingClientRect();
+      var prog = (vh * 0.82 - r.top) / r.height;
+      prog = Math.max(0, Math.min(1, prog));
+      tlProgress.style.transform = 'scaleY(' + (reduce ? 1 : prog) + ')';
+    }
+    ticking = false;
+  }
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  update();
+
+  // --- FAQ accordion (animated max-height) ---
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    var a = item.querySelector('.faq-a');
+    q.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      if(isOpen){
+        a.style.maxHeight = a.scrollHeight + 'px';
+        requestAnimationFrame(function(){ a.style.maxHeight = '0px'; });
+        item.classList.remove('open');
+        q.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('open');
+        q.setAttribute('aria-expanded', 'true');
+        a.style.maxHeight = a.scrollHeight + 'px';
+        a.addEventListener('transitionend', function te(){
+          if(item.classList.contains('open')){ a.style.maxHeight = 'none'; }
+          a.removeEventListener('transitionend', te);
+        });
+      }
+    });
+  });
+  window.addEventListener('resize', function(){
+    document.querySelectorAll('.faq-item.open .faq-a').forEach(function(a){ a.style.maxHeight = 'none'; });
+  });
+
+  // --- Sticky bar (appears after hero) ---
+  var hero = document.querySelector('.hero');
+  var bar = document.getElementById('stickyBar');
+  if(hero && bar && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting){ bar.classList.add('show'); } else { bar.classList.remove('show'); }
+      });
+    }, {threshold:0});
+    io.observe(hero);
+  }
+})();
+</script>
+</body></html>
