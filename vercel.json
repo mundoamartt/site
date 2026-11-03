@@ -3,7 +3,7 @@
   "redirects": [
     {
       "source": "/",
-      "destination": "/chama-que-vem-business-planner/",
+      "destination": "/chama-que-vem/",
       "permanent": false
     }
   ]
