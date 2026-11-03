@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt-BR"><head>
+<html lang="pt-BR" class="pv"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chama Que Vem | Presencial 12.12 — Lumiar, Serra Carioca | Amartt</title>
 <meta name="description" content="Um dia para intencionar seu novo ano. 12 de dezembro, das 9h às 17h, no EcoSítio Arco-íris em Lumiar — Nova Friburgo/RJ. Yoga, meditação, dinâmicas criativas e o seu Mapa de Metas 2027.">
 <script>
   document.documentElement.className += ' js';
-  /* ===== MODO PRÉ-VENDA — remover junto com o bloco .pv- do CSS ===== */
-  if (location.search.indexOf('pre-venda') > -1) { document.documentElement.className += ' pv'; }
+  /* ===== MODO PRÉ-VENDA =====
+     Ligado por padrão pela classe "pv" no <html>, até 08/11.
+     Para encerrar a ação: tirar a classe "pv" do <html>.
+     ?valor-normal mostra a página já sem a pré-venda (pra conferir antes). */
+  if (location.search.indexOf('valor-normal') > -1) {
+    document.documentElement.classList.remove('pv');
+  }
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1224,7 +1229,7 @@
 
   <!-- TARJA DE PRÉ-VENDA (só aparece em ?pre-venda) -->
   <div class="pv-tarja">
-    <span class="pv-estrela">✦</span> Que bom ter você aqui! Essa é a nossa pré-venda para quem é de casa: <strong>4x R$82,50</strong> sem juros, até domingo, 08/11.
+    <span class="pv-estrela">✦</span> Que bom ter você aqui! Nossa pré-venda está aberta: <strong>4x R$82,50</strong> sem juros, até domingo, 08/11.
   </div>
 
   <!-- HERO -->
