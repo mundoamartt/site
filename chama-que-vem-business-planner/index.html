@@ -827,13 +827,65 @@
   }
 
   footer{
-    padding:40px 24px;
+    padding:60px 24px 40px;
     text-align:center;
+    background:var(--ink);
+    border-top:1px solid rgba(255,255,255,0.07);
+  }
+  .footer-sponsors{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:48px;
+    margin-bottom:48px;
+  }
+  .footer-block{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+  }
+  .footer-label{
+    font-family:var(--font-display);
+    font-size:9px;
+    letter-spacing:0.2em;
+    color:var(--gold);
+    opacity:0.7;
+  }
+  .footer-logos{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:36px;
+    flex-wrap:wrap;
+  }
+  .footer-logo{
+    height:36px;
+    width:auto;
+    object-fit:contain;
+    opacity:0.8;
+    transition:opacity 0.3s ease;
+  }
+  .footer-logo:hover{ opacity:1; }
+  .footer-logo--realizacao{ height:28px; }
+  .footer-divider{
+    width:1px;
+    height:64px;
+    background:rgba(255,255,255,0.1);
+    align-self:center;
+  }
+  .footer-copy{
     font-family:var(--font-display);
     font-size:11px;
     letter-spacing:0.08em;
     color:var(--paper-dim);
-    opacity:0.6;
+    opacity:0.4;
+    margin:0;
+  }
+  @media(max-width:600px){
+    .footer-sponsors{ flex-direction:column; gap:36px; }
+    .footer-divider{ width:60px; height:1px; }
   }
 
   /* STICKY MOBILE BAR */
@@ -1229,7 +1281,40 @@
     <a href="#ingressos" class="btn btn-primary btn-shimmer">Quero manifestar essa virada!</a>
   </section>
 
-  <footer>AMARTT · CHAMA QUE VEM | BUSINESS PLANNER · 08/08 · AO VIVO E ONLINE</footer>
+  <footer>
+    <div class="footer-sponsors">
+
+      <div class="footer-block">
+        <span class="footer-label">REALIZAÇÃO</span>
+        <div class="footer-logos">
+          <img src="images/hero-logo.png" alt="Amartt" class="footer-logo footer-logo--realizacao">
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-block">
+        <span class="footer-label">PATROCÍNIO</span>
+        <div class="footer-logos">
+          <!-- logo-ecositio.png — aguardando envio -->
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-block">
+        <span class="footer-label">APOIO</span>
+        <div class="footer-logos">
+          <!-- logo-imana.png — aguardando envio -->
+          <img src="images/logo-ccm.png" alt="CCM" class="footer-logo">
+          <img src="images/logo-alya.png" alt="Alya" class="footer-logo">
+          <img src="images/logo-margaridda.png" alt="Margaridda Cosméticos" class="footer-logo">
+        </div>
+      </div>
+
+    </div>
+    <p class="footer-copy">AMARTT · CHAMA QUE VEM | BUSINESS PLANNER · 08/08 · AO VIVO E ONLINE</p>
+  </footer>
 
   <div class="sticky-bar" id="stickyBar">
     <div class="info">08/08 · 10h às 16h<strong>A partir de R$147</strong></div>
