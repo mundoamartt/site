@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR"><head>
+<html lang="pt-BR" class="pv"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chama Que Vem | Presencial 12.12 — Lumiar, Serra Carioca | Amartt</title>
@@ -7,10 +7,10 @@
 <script>
   document.documentElement.className += ' js';
   /* ===== MODO PRÉ-VENDA =====
-     Ligado por padrão pela classe "pv" no <html>, até 15/11.
-     Para encerrar a ação: tirar a classe "pv" do <html>.
+     Encerra automaticamente à meia-noite do dia 16/11 (BRT = UTC-3).
      ?valor-normal mostra a página já sem a pré-venda (pra conferir antes). */
-  if (location.search.indexOf('valor-normal') > -1) {
+  var pvFim = new Date('2026-11-16T03:00:00Z'); // 00h BRT = 03h UTC
+  if (new Date() >= pvFim || location.search.indexOf('valor-normal') > -1) {
     document.documentElement.classList.remove('pv');
   }
 </script>
